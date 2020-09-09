@@ -1,0 +1,14 @@
+Article: Iliaei, S. P., Killam, H., Dal Ben, R., & Byers-Heinlein, K. (under review). Bilingualism affects infant cognition: Evidence from new and reanalyzed data.
+OSF: https://osf.io/bz8jn/
+
+Code book for "cogcontrol_20_parent_ed.csv"
+
+Feedback and suggestions: 
+<kbh.coordinator@concordia.ca>, <dalbenwork@gmail.com>, <k.byers@concordia.ca>
+
+Variables:
+- recording_name: factor, participant's id as recorded by the eyetracker;
+- parent_A_gender: factor, parent A gender, F stands for "female" and M for "male";
+- parent_A_education: factor, parent A highest educational level;
+- parent_B_gender: factor, parent B gender, F stands for "female" and M for "male";
+- parent_B_education: factor, parent B highest educational level;

@@ -1,0 +1,92 @@
+Article: Iliaei, S. P., Killam, H., Dal Ben, R., & Byers-Heinlein, K. (under review). Bilingualism affects infant cognition: Evidence from new and reanalyzed data.
+OSF: https://osf.io/bz8jn/
+
+Code book for "tobii_full_export.rda"
+
+Feedback and suggestions: 
+<kbh.coordinator@concordia.ca>, <dalbenwork@gmail.com>, <k.byers@concordia.ca>
+
+Variables:
+- StudioProjectName: character, name of the project in Tobii Studio;
+- StudioTestName: character, name of the testing order (Order 1 or Order 2); 
+- RecordingName: character, unique participant identifier as recorded by the eyetracker;
+- RecordingDuration: numerical, total duration of the eyetracking recording;
+- MediaName: character, name of the media (video) played during the experiment;
+- MediaPosX (ADCSpx): numerical, horizontal position (x-axis) in pixels of the left edge of media on the screen;
+- MediaPosY (ADCSpx): numerical, vertical position (y-axis) in pixels of the top edge of media on the screen;
+- MediaWidth: numerical, media width in pixels;
+- MediaHeight: numerical, media height in pixels;
+- SegmentName: character, name of recording segment in TOBII, not used;
+- SegmentStart: numeric, start time of recording segment, not used;
+- SegmentEnd: numeric, end time of recording segment, not used;
+- SegmentDuration: numeric, total length of recording segment, not used;
+- SceneName: character, name of the Scene selected for export - not used;
+- SceneSegmentStart: numeric, start time for a segment belonging to a scene - not used;
+- SceneSegmentEnd: numeric, end time for a segment belongong to a scene - not used;
+- SceneSegmentDuration: numeric, total length of a segment belonging to a scene - not used;
+- RecordingTimestamp: numerical, recording timestamp for each sample (60 Hz);
+- LocalTimeStamp: character, timestamp for local computer/system clock;
+- EyeTrackerTimestamp: numerical, eyetracker's internal timestamp;
+- MouseEventIndex: integer, represents the order of mouse-click events - not used;
+- MouseEvent: character, mouse click type - not used;
+- MouseEventX (ADSCpx): numeric, horizontal coordinate of the mouse on the screen in pixels at time of event - not used;
+- MouseEventY (ADSCpx): numeric, vertical coordinate of the mouse on the screen in pixels at time of event - not used;
+- MouseEventX (MCSpx): numeric, horizontal coordinate of the mouse on the media in pixels at time of event - not used;
+- MouseEventY (MCSpx): numeric, vertical coordinate of the mouse on the media in pixels at time of event - not used;
+- KeyPressEventIndex: integer, the order in which a key press event was recorded;
+- KeyPressEvent: character, which key was pressed at time of event;
+- StudioEventIndex: integer, represents the order of any event in Tobii Studio;
+- StudioEvent: character, type of media element or manual logging event in Tobii Studio;
+- StudioEventData: character, displays the media file name associated with the event in Tobii Studio;
+- ExternalEventIndex: integer, represents the order of external events in Tobii Studio - not used;
+- ExternalEvent: character, type of external event in Tobii Studio - not used;
+- ExternalEventValue: numeric, value of external event - not used;
+- EventMarkerValue: logical, Reports whether the signal on the eyetracker’s sync port is off (0) or on (1) - not used;
+- FixationIndex: integer, represents the order in which a fixation event was recorded;
+- SaccadeIndex: integer, represents the order in which a saccade event was recorded - not used;
+- GazeEventType: character, type of eye movement characterized by the eyetracker (fixation, saccade, or unclassified);
+- GazeEventDuration: numeric, duration of an eye movement event in milliseconds;
+- FixationPointX (MCSpx): integer, horizontal coordinate of the fixation point on the media in pixels;
+- FixationPointY (MCSpx): integer, vertical coordinate of the fixation point on the media in pixels;
+- SaccadicAmplitude: numeric, distance in visual degrees between the previous fixation location and the current fixation location as defined by the fixation filter;
+- AbsoluteSaccadicDirection: numeric, offset in degrees between the horizontal axis and the current fixation location where the previous fixation location is set as the origin;
+- RelativeSaccadicDirection: numeric, the difference between the absolute saccadic direction of the current and previous saccade where the current saccade is between the current and previous fixation;
+- AOI columns 1 through 35: logical, indicate whether participant's gaze fell within the specified AOI (target, circle, or distractor);
+- GazePointIndex: integer, indicates the order in which the gaze sample was acquired by the eyetracking software;
+- GazePointLeftX (ADCSpx): numeric, horizontal coordinate of the unprocessed gaze point for the left eye on the screen;
+- GazePointLeftY (ADCSpx): numeric, vertical coordinate of the unprocessed gaze point for the left eye on the screen;
+- GazePointRightX (ADCSpx): numeric, horizontal coordinate of the unprocessed gaze point for the right eye on the screen;
+- GazePointRightY (ADCSpx): numeric, vertical coordinate of the unprocessed gaze point for the right eye on the screen;
+- GazePointX (ADCSpx): numeric, horizontal coordinate of the averaged left and right eye gaze point on the screen;
+- GazePointY (ADCSpx): numeric, vertical coordinate of the averaged left and right eye gaze point on the screen;
+- GazePointX (MCSpx): numeric, horizontal coordinate of the averaged left and right eye gaze point on the media element;
+- GazePointY (MCSpx): numeric, vertical coordinate of the averaged left and right eye gaze point on the media element;
+- GazePointLeftX (ADCSmm): numeric, horizontal coordinate of the unprocessed gaze point for the left eye on the screenin mm;
+- GazePointLeftY (ADCSmm): numeric, vertical coordinate of the unprocessed gaze point for the left eye on the screen in mm;
+- GazePointRightX (ADCSmm): numeric, horizontal coordinate of the unprocessed gaze point for the right eye on the screen in mm;
+- GazePointRightY (ADCSmm): numeric, vertical coordinate of the unprocessed gaze point for the right eye on the screen in mm;
+- StrictAverageGazePointX (ADCSmm): numeric, horizontal coordinate of the averaged gaze point for both eyes on the screen in mm;
+- StrictAverageGazePointY (ADCSmm): numeric, vertical coordinate of the averaged gaze point for both eyes on the screen in mm;
+- EyePosLeftX (ADCSmm): numeric, horizontal coordinate of the 3D position of the left eye;
+- EyePosLeftY (ADCSmm): numeric, vertical coordinate of the 3D position of the left eye;
+- EyePosLeftZ (ADCSmm): numeric, distance/depth coordinate of the 3D position of the left eye;
+- EyePosRightX (ADCSmm): numeric, horizontal coordinate of the 3D position of the right eye;
+- EyePosRightY (ADCSmm): numeric, vertical coordinate of the 3D position of the right eye;
+- EyePosRightZ (ADCSmm): numeric, distance/depth coordinate of the 3D position of the right eye;
+- CamLeftX: numeric, horizontal coordinate of the left eye in the eyetracker sensor image; 
+- CamLeftY: numeric, vertical coordinate of the left eye in the eyetracker sensor image; 
+- CamRightX: numeric, horizontal coordinate of the right eye in the eyetracker sensor image; 
+- CamRightY: numeric, vertical coordinate of the right eye in the eyetracker sensor image; 
+- DistanceLeft: numeric, distance between the left eye and the eyetracker in mm;
+- DistanceRight: numeric, distance between the right eye and the eyetracker in mm;
+- PupilLeft: numeric, estimated size of the left eye pupil in mm;
+- PupilRight: numeric, estimated size of the right eye pupil in mm;
+- ValidityLeft: integer, indicates the confidence level that the left eye has been correctly identified. The values range from 0 (high confidence) to 4 (eye not found);
+- ValidityRight: integer, indicates the confidence level that the right eye has been correctly identified. The values range from 0 (high confidence) to 4 (eye not found);
+- IRMarkerCount: integer, the number of IR-Markers detected in the current sample;
+- IRMarkerID: integer, the ID numbers of the IR-Markers detected in the current sample;
+- PupilGlassesRight: numeric, estimated value of the right pupil size in relation to the average value of the pupil during the calibration;
+- X187: empty column, not used
+-  ... 
+
+

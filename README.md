@@ -33,7 +33,7 @@ Kalashnikova et al. (2020):
 
 The repository is organized into `/input`, `/output`, and `/scripts` subdirectories: 
 
-* `/input`: contain the raw data for Studies 1a and 2 (our own) and **step-by-step** guides to retrieve the raw data from D'Souza et al. (2020; [OSF](https://osf.io/53gh2/), [Dryad](https://doi.org/10.5061/dryad.3n5tb2rc6)) and Kalashnikova et al. (2020; [OSF](https://osf.io/k3e9z/)). The folder also contain `.json` codebooks for each raw dataset.
+* `/input`: contain the raw data for Studies 1a and 2 (our own) and **step-by-step** guides to retrieve the raw data from D'Souza et al. (2020; [OSF](https://osf.io/53gh2/), [Dryad](https://doi.org/10.5061/dryad.3n5tb2rc6)) and Kalashnikova et al. (2020; [OSF](https://osf.io/k3e9z/)). The folder also contain `.json` and `.txt` codebooks for each raw dataset.
 
 * `/output`: contain two subdirectories, `/data` and `/table_figure`
   
