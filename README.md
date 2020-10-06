@@ -1,9 +1,7 @@
----
-title: "Repository specifications - Iliaei et al. (2020)"
+"Repository specifications - Iliaei et al. (2020)"
+
 author: "Hilary Killam and Rodrigo Dal Ben"
 date: "September, 03, 2020"
-output: github_document
----
 
 **Article**: Iliaei, S. P., Killam, H., Dal Ben, R., & Byers-Heinlein, K. (under review). Bilingualism affects infant cognition: Insights from new and open data.
 
