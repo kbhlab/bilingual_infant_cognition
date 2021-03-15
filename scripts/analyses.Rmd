@@ -31,7 +31,7 @@ Feedback and suggestions:
 Please indicate which study (1a, 1b, 1c, 1d, or 2) and which sample (filtered or unfiltered) you want to analyze. For Study 2 - filtered sample, it is also possible to include `vocabulary` as a predictor. 
 
 ```{r}
-study <- "2" # options: "1a", "1b", "1c", "1d", "2"
+study <- "1a" # options: "1a", "1b", "1c", "1d", "2"
 filtered <- TRUE # options: TRUE = "filtered" OR FALSE = "unfiltered"
 
 # TRUE can only be selected for vocabulary if 
@@ -781,6 +781,10 @@ image(1:length(cb_palette), 1, as.matrix(1:length(cb_palette)),
 
 ```{r time_series_plots, echo = FALSE}
 ###----------------------------------------------------SET PARAMETERS
+if (study == "1a"){data_time_series_full <- data_time_series_full %>%  filter(age_group == "7 months")}
+
+if (study == "2"){data_time_series_full <- data_time_series_full %>%  filter(age_group == "20 months")}
+
 if (study == "2" & vocabulary == TRUE){
   
   FIG_TITLE <- paste0("Time course of infant looking for Study ", study, " (", filtered_name, " - vocabulary )")
