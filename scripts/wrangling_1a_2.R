@@ -39,12 +39,29 @@ ms_list_all <- read_csv(here("input/2019_CogControl_MSL.csv"), na = "-") %>%
   separate(lang.group,into = c("language", "group")) %>%
   clean_names() %>%
   left_join(edu_all, by = "recording_name") %>%
-  mutate(mother_edu = case_when(parent_A_gender == "F" ~ parent_A_education,
+  mutate(mother_edu_raw = case_when(parent_A_gender == "F" ~ parent_A_education,
                                 parent_B_gender == "F" ~ parent_B_education,
                                 TRUE ~ NA_character_)) %>%
-  mutate(mother_edu = case_when(mother_edu == "some_university" | mother_edu == "trade_school" | mother_edu == "college" | mother_edu == "professional" | mother_edu == "attestation_of_college" ~ "post-secondary",
-                                mother_edu == "masters" | mother_edu == "doctoral" ~ "advanced_degree",
-                                TRUE ~ mother_edu))
+  mutate(mother_edu = case_when(mother_edu_raw == "some_university" | mother_edu_raw == "trade_school" | mother_edu_raw == "college" | mother_edu_raw == "professional" | mother_edu_raw == "attestation_of_college" ~ "post-secondary",
+                                mother_edu_raw == "masters" | mother_edu_raw == "doctoral" ~ "advanced_degree",
+                                TRUE ~ mother_edu_raw))
+
+language_exposure <- ms_list_all %>%
+  pivot_longer(cols = c(per_eng:per_other2), names_to = "input_lang", values_to = "exposure") %>%
+  group_by(recording_name) %>%
+  arrange(desc(exposure)) %>%
+  mutate(lang_number = row_number()) %>%
+  filter(lang_number <=2) %>%
+  mutate(dom_lang_exposure = max(exposure),
+         nondom_langs_exposure = sum(exposure) - dom_lang_exposure) %>%
+  filter(dom_lang_exposure == exposure) %>%
+  mutate(dominant_lang = case_when(input_lang == "per_eng" ~ "english",
+                                   input_lang == "per_fr" ~ "french",
+                                   str_detect(input_lang, "other") ~ "other")) %>%
+  select(recording_name, dominant_lang, dom_lang_exposure, nondom_langs_exposure)
+
+ms_list_all <- ms_list_all %>%
+  left_join(language_exposure, by = "recording_name")
 
 ms_list <- ms_list_all %>%
   mutate(keeper = case_when(excl_reason == "incomplete_cdi" ~ 1, #we will actually keep these in the final sample
