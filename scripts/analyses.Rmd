@@ -78,7 +78,7 @@ library(apaTables)
 library(gt)
 library(flextable)
 library(sjPlot)
-library(htmltools) ## test multiple outputs
+library(htmltools) ## test multple outputs
 
 library(eyetrackingR) 
 
@@ -824,6 +824,10 @@ image(1:length(cb_palette), 1, as.matrix(1:length(cb_palette)),
 
 ```{r time_series_plots, echo = FALSE}
 ###----------------------------------------------------SET PARAMETERS
+if (study == "1a"){data_time_series_full <- data_time_series_full %>%  filter(age_group == "7 months")}
+
+if (study == "2"){data_time_series_full <- data_time_series_full %>%  filter(age_group == "20 months")}
+
 if (study == "2" & vocabulary == TRUE){
   
   FIG_TITLE <- paste0("Time course of infant looking for Study ", study, " (", filtered_name, " - vocabulary )")
@@ -1618,7 +1622,7 @@ block_data %>%
 ## Anovas 7 m
 
 ```{r anovas}
-if (study == "1a"){
+if (study == "1a" & filtered == TRUE){
 
 #--------------------------------------------------------------------ANOVA by block: 7m pre-switch
 
@@ -1916,7 +1920,7 @@ post_7_anticipations <- block_data %>%
 ## ANOVAs - 20 m
 
 ```{r}
-if (study == "2"){
+if (study == "2" & filtered == TRUE & vocabulary == FALSE){
 
 ##---------------------------------------------------------------20 month pre switch
 ## ANOVA by block: 20m pre-switch
@@ -2083,105 +2087,6 @@ post_20_bi <-  block_data %>%
 
 }
 ```
-
-##Traditional Plots (by trial)
-
-```{r}
-
-if ((study == "1a" | study == "2") & filtered == TRUE){
-
-trial_data <- data_eyetracking_clean %>%
-  make_time_window_data(aois = c("target", "distractor", "circle"),
-                        predictor_columns = c("age_group", "language", "trial_type", "trial_num")) %>%
-  select(-Elog, -Weights, -LogitAdjusted, -ArcSin) %>%
-  mutate(looking_ms = Prop * (SamplesTotal * (1000/60))) %>% #adds number of milliseconds spent looking at target for the trial
-  pivot_wider(names_from = AOI, values_from = c(SamplesInAOI, Prop, looking_ms)) %>%
-  mutate(total_looking_time = looking_ms_target + looking_ms_distractor + looking_ms_circle) %>%
-  mutate(correct = case_when(looking_ms_target > looking_ms_distractor ~ 1, 
-                                   TRUE ~ 0),
-         incorrect = case_when(looking_ms_target < looking_ms_distractor ~ 1, 
-                                     TRUE ~ 0),
-         no_anticipation = case_when(looking_ms_target + looking_ms_distractor == 0 ~ 1, 
-                              TRUE ~ 0),
-         total_anticipation = 1 - no_anticipation) %>% #filter(no_anticipation == 0) %>% ### keep the circle looks!
-  mutate(block_num = (as.numeric(trial_num)+2) %/% 3) %>%
-  mutate(block_num = as.factor(block_num))
-
-if (study == "1a") {
-trial_data %>%
-  filter(age_group == "7 months") %>%
-  mutate(trial_type = case_when(trial_type == "pre-switch" ~ "Training",
-                                TRUE ~ "Test"),
-         trial_type = factor(trial_type, levels = c("Training", "Test"))) %>%
-  ggplot(aes(x = trial_num, y = correct, color = language, shape = language, fill = language)) +
-  stat_summary(fun.y = "mean", geom = "point") +
-  stat_smooth(method = "lm", se = FALSE) +
-  facet_grid( ~ trial_type) +
-  scale_x_discrete(limits = c(1:9)) +
-  scale_y_continuous(limits = c(0:1)) +
-  theme_bw(base_size=15) +
-  scale_color_manual(values = c("#D55E00", "#0072B2")) +
-  scale_fill_manual("Language group", values = c("#D55E00", "#0072B2")) +
-  scale_shape_manual(values = c(21, 23)) + 
-  theme_minimal(base_size = 13.5) +
-  theme(plot.title = element_text(hjust = 0.5),
-        strip.background = element_rect(fill = "#D9D9D9", color = "#9b9b9b"),
-        panel.background = element_rect(fill = "transparent", color = "transparent"),
-        panel.grid = element_line(color = "#eaeaea"),
-        panel.grid.major = element_line(size = .25),
-        panel.spacing = unit(.5, "lines"),
-        axis.text = element_text(size = 10)) +
-  xlab("Trial number") +
-  ylab("Proportion of infants with \ncorrect anticipation") +
-  labs(color  = "Language group", linetype = "Language group", shape = "Language group") +
-  ggtitle("Correct anticipation by trial for Study 1a (age 7 months)")
-
-
-ggsave(paste0("plot_by_trial_", dataset, ".png"),
-       path = here("output/table_figure/"),
-       width = 9, height = 4, units = "in", dpi = 300)
-
-
-} else if (study == "2") {
-
-trial_data %>%
-  filter(age_group == "20 months") %>%
-  mutate(trial_type = case_when(trial_type == "pre-switch" ~ "Training",
-                                TRUE ~ "Test"),
-         trial_type = factor(trial_type, levels = c("Training", "Test"))) %>%
-  ggplot(aes(x = trial_num, y = correct, color = language, shape = language, fill = language)) +
-  stat_summary(fun.y = "mean", geom = "point") +
-  stat_smooth(method = "lm", se = FALSE) +
-  facet_grid( ~ trial_type) +
-  scale_x_discrete(limits = c(1:9)) +
-  scale_y_continuous(limits = c(0:1)) +
-  theme_bw(base_size=15) +
-  scale_color_manual(values = c("#D55E00", "#0072B2")) +
-  scale_fill_manual("Language group", values = c("#D55E00", "#0072B2")) +
-  scale_shape_manual(values = c(21, 23)) + 
-  theme_minimal(base_size = 13.5) +
-  theme(plot.title = element_text(hjust = 0.5),
-        strip.background = element_rect(fill = "#D9D9D9", color = "#9b9b9b"),
-        panel.background = element_rect(fill = "transparent", color = "transparent"),
-        panel.grid = element_line(color = "#eaeaea"),
-        panel.grid.major = element_line(size = .25),
-        panel.spacing = unit(.5, "lines"),
-        axis.text = element_text(size = 10)) +
-  xlab("Trial number") +
-  ylab("Proportion of infants with \ncorrect anticipation") +
-  labs(color  = "Language group", linetype = "Language group", shape = "Language group") +
-  ggtitle("Correct anticipation by trial for Study 2 (age 20  months)")
-
-
-ggsave(paste0("plot_by_trial_", dataset, ".png"),
-       path = here("output/table_figure/"),
-       width = 9, height = 4, units = "in", dpi = 300)
-  
-}}
-
-```
-
-
 
 # Correlation
 
