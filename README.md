@@ -1,4 +1,4 @@
-**Repository specifications - Iliaei et al. (2020)**
+**Repository specifications - Dal Ben et al. (2020)**
 
 *author*: Hilary Killam and Rodrigo Dal Ben
 
