@@ -1,0 +1,228 @@
+baby_id,gender,study,study_id,age_group,recording_name,lang_group,full_baby_age,months,days,total_age_days_excel,per_eng,per_fr,per_other1,per_other2,other_lang1,other_lang2,dom_lang,keeper,excl_reason,comments,cdi_prod_eng,cdi_prod_fr,total_vocab_prod,total_concept_prod,te_prod,study_order,lang_mix,years
+44066,male,CogControl,S01,7 months,CogControl7_S01_44066,Monolinguals_fr,0y 7m 29d ,7,29,243,0,100,0,0,none,none,french,1,none,-,-,-,-,-,-,2,3,0
+44457,male,CogControl,S02,7 months,CogControl7_S02_44457,Monolinguals_fr,0y 7m 25d ,7,25,239,3,97,0,0,none,none,french,1,none,-,-,-,-,-,-,1,0,0
+44478,female,CogControl,S03,7 months,CogControl7_S03_44478,Bilinguals_engfr,0y 7m 21d ,7,21,235,28,61,12,0,haitian creole,none,french,1,none,good baby,-,-,-,-,-,1,25,0
+44732,male,CogControl,S04,7 months,CogControl7_S04_44732,Bilinguals_engfr,0y 7m 18d ,7,18,232,59,39,2,0,spanish,none,english,0,health,"low birth, also tobii creashed",-,-,-,-,-,1,30,0
+44546,male,CogControl,S05,7 months,CogControl7_S05_44546,none_,0y 8m 6d ,8,6,251,0,23,77,0,romanian,none,romanian,0,language,language criteria,-,-,-,-,-,1,0,0
+44661,female,CogControl,S06,7 months,CogControl7_S06_44661,Bilinguals_engfr,0y 7m 27d ,7,27,241,29,71,0,0,none,none,french,1,none,Great baby,-,-,-,-,-,2,5,0
+44663,female,CogControl,S07,7 months,CogControl7_S07_44663,Bilinguals_other,0y 7m 3d ,7,3,218,21,28,51,0,cantonese,none,cantonese,0,health,low birth,-,-,-,-,-,2,0,0
+45267,female,CogControl,S08,7 months,CogControl7_S08_45267,Bilinguals_engfr,0y 7m 5d ,7,5,220,60,33,8,0,russian,none,english,1,none,Great baby,-,-,-,-,-,2,5,0
+45223,male,CogControl,S09,7 months,CogControl7_S09_45223,none_,0y 7m 6d ,7,6,221,76,24,0,0,none,none,english,0,language,language criteria,-,-,-,-,-,2,10,0
+45270,male,CogControl,S10,7 months,CogControl7_S10_45270,Monolinguals_fr,0y 7m 5d ,7,5,220,0,100,0,0,none,none,french,1,none,Great baby!,-,-,-,-,-,1,NA,0
+44706,male,CogControl,S11,7 months,CogControl7_S11_44706,Bilinguals_engfr,0y 7m 30d ,7,30,244,28,59,14,0,punjabi,none,french,0,fussiness,Just looked at 3 middle switch trials,-,-,-,-,-,2,21,0
+45352,male,CogControl,S12,7 months,CogControl7_S12_45352,Monolinguals_fr,0y 7m 10d ,7,10,225,0,100,0,0,none,none,french,1,none,Great kid,-,-,-,-,-,1,NA,0
+45232,female,CogControl,S13,7 months,CogControl7_S13_45232,Monolinguals_fr,0y 7m 2d ,7,2,217,0,100,0,0,none,none,french,1,none,Great kid,-,-,-,-,-,2,NA,0
+45222,male,CogControl,S14,7 months,CogControl7_S14_45222,Monolinguals_fr,0y 7m 7d ,7,7,222,0,100,0,0,none,none,french,0,technical,Great but difficulty calibrating,-,-,-,-,-,2,0,0
+45233,male,CogControl,S15,7 months,CogControl7_S15_45233,Bilinguals_other,0y 7m 8d ,7,8,223,50,23,27,0,russian,none,english,0,fussiness,Not attentive,-,-,-,-,-,1,17,0
+45314,female,CogControl,S16,7 months,CogControl7_S16_45314,none_,0y 7m 7d ,7,7,222,74,18,9,0,italian,none,english,0,language,Lang criteria,-,-,-,-,-,1,12,0
+45294,female,CogControl,S17,7 months,CogControl7_S17_45294,Bilinguals_other,0y 7m 19d ,7,19,234,27,0,73,0,russian,none,russian,1,none,great kid,-,-,-,-,-,1,15,0
+45376,female,CogControl,S18,7 months,CogControl7_S18_45376,Monolinguals_eng,0y 7m 17d ,7,17,232,100,0,0,0,none,none,english,1,none,great kid,-,-,-,-,-,1,0,0
+45347,female,CogControl,S19,7 months,CogControl7_S19_45347,Monolinguals_fr,0y 7m 9d ,7,9,224,0,100,0,0,none,none,french,1,none,good,-,-,-,-,-,1,0,0
+45487,male,CogControl,S20,7 months,CogControl7_S20_45487,none_,0y 7m 26d ,7,26,241,79,21,0,0,none,none,english,0,language,Language criteria,-,-,-,-,-,2,12,0
+44875,female,CogControl,S21,7 months,CogControl7_S21_44875,none_,0y 7m 1d ,7,1,213,15,15,43,29,turkish,kurdish,turkish,0,language,Turkish/Kurdish bilingual,-,-,-,-,-,2,9,0
+45370,male,CogControl,S22,7 months,CogControl7_S22_45370,Monolinguals_eng,0y 7m 11d ,7,11,226,95,5,0,0,none,none,english,1,none,-,-,-,-,-,-,2,5,0
+45497,male,CogControl,S23,7 months,CogControl7_S23_45497,Bilinguals_other,0y 6m 25d ,6,25,209,35,0,65,0,tamil,none,tamil,1,none,good,-,-,-,-,-,2,9,0
+44771,female,CogControl,S24,7 months,CogControl7_S24_44771,Monolinguals_fr,0y 7m 11d ,7,11,223,0,100,0,0,none,none,french,1,none,Great!,-,-,-,-,-,1,3,0
+45218,female,CogControl,S25,7 months,CogControl7_S25_45218,Monolinguals_fr,0y 7m 16d ,7,16,228,0,100,0,0,none,none,french,1,none,Great!,-,-,-,-,-,1,0,0
+45238,male,CogControl,S26,7 months,CogControl7_S26_45238,Monolinguals_eng,0y 7m 18d ,7,18,233,92,8,0,0,none,none,english,1,none,Great!,-,-,-,-,-,2,4,0
+44912,male,CogControl,S27,7 months,CogControl7_S27_44912,Monolinguals_eng,0y 7m 17d ,7,17,229,100,0,0,0,none,none,french,1,none,Good baby,-,-,-,-,-,1,NA,0
+45241,male,CogControl,S28,7 months,CogControl7_S28_45241,none_,0y 7m 21d ,7,21,236,12,68,20,0,italian,none,french,0,language,lang criteria,-,-,-,-,-,1,4,0
+44897,male,CogControl,S29,7 months,CogControl7_S29_44897,none_,0y 7m 6d ,7,6,218,0,0,100,0,russian,none,russian,0,language,monolingual russian,-,-,-,-,-,1,8,0
+44822,female,CogControl,S30,7 months,CogControl7_S30_44822,Monolinguals_eng,0y 7m 13d ,7,13,225,98,2,0,0,none,none,english,0,fussiness,unattentive on tobii,-,-,-,-,-,2,NA,0
+45540,male,CogControl,S31,7 months,CogControl7_S31_45540,Monolinguals_eng,0y 7m 6d ,7,6,218,100,0,0,0,none,none,english,1,none,Great baby!,-,-,-,-,-,2,1,0
+44793,female,CogControl,S32,7 months,CogControl7_S32_44793,none_,0y 7m 21d ,7,21,233,84,0,16,0,greek,none,english,0,language,language criteria,-,-,-,-,-,2,20,0
+44840,female,CogControl,S33,7 months,CogControl7_S33_44840,none_,0y 7m 14d ,7,14,226,7,0,54,39,japanese,spanish,japanese,0,language,bilingual japanese/spanish,-,-,-,-,-,2,0,0
+44766,female,CogControl,S34,7 months,CogControl7_S34_44766,Monolinguals_eng,0y 6m 28d ,6,28,210,69,27,4,0,italian,none,english,0,technical,difficulty calibrating,-,-,-,-,-,2,18,0
+44826,male,CogControl,S35,7 months,CogControl7_S35_44826,Monolinguals_fr,0y 6m 30d ,6,30,211,0,93,3,4,spanish,arabic,french,1,none,Great in video!,-,-,-,-,-,2,0,0
+44078,male,CogControl,S36,7 months,CogControl7_S36_44078,Bilinguals_engfr,0y 7m 6d ,7,6,218,69,27,4,0,italian,none,english,0,fussiness,Not attentive on tobii,-,-,-,-,-,1,23,0
+44860,male,CogControl,S37,7 months,CogControl7_S37_44860,none_,0y 7m 17d ,7,17,229,3,13,85,0,arabic,none,arabic,0,language,language criteria,-,-,-,-,-,2,24,0
+44609,female,CogControl,S38,7 months,CogControl7_S38_44609,Monolinguals_fr,0y 7m 17d ,7,17,229,2,98,0,0,none,none,french,0,technical,"really hard to calibrate, moved a lot so not enough data",-,-,-,-,-,2,2,0
+45544,female,CogControl,S39,7 months,CogControl7_S39_45544,Monolinguals_eng,0y 7m 14d ,7,14,226,100,0,0,0,none,none,english,1,none,great baby,-,-,-,-,-,1,3,0
+44748,female,CogControl,S40,7 months,CogControl7_S40_44748,Monolinguals_fr,0y 7m 23d ,7,23,235,0,100,0,0,none,none,french,0,fussiness,some track loss towards end,-,-,-,-,-,2,2,0
+46315,male,CogControl,S41,7 months,CogControl7_S41_46315,none_,0y 7m 8d ,7,8,220,74,3,23,0,polish,none,english,0,language,language criteria & had cold,-,-,-,-,-,2,20,0
+46312,female,CogControl,S42,7 months,CogControl7_S42_46312,none_,0y 7m 16d ,7,16,228,8,71,21,0,spanish,none,french,0,language,language but great baby,-,-,-,-,-,2,24,0
+46678,female,CogControl,S43,7 months,CogControl7_S43_46678,none_,0y 6m 28d ,6,28,211,82,0,18,0,spanish,none,english,0,language,lang criteria,-,-,-,-,-,2,20,0
+46737,male,CogControl,S44,7 months,CogControl7_S44_46737,Bilinguals_other,0y 7m 3d ,7,3,217,11,25,64,0,spanish,none,spanish,1,none,-,-,-,-,-,-,2,27,0
+46534,male,CogControl,S45,7 months,CogControl7_S45_46534,Bilinguals_other,0y 7m 29d ,7,29,243,0,47,53,0,kabyle,none,kabyle,1,none,great baby!,-,-,-,-,-,1,20,0
+46742,female,CogControl,S46,7 months,CogControl7_S46_46742,Monolinguals_eng,0y 8m 0d ,8,0,245,100,0,0,0,none,none,english,1,none,great baby!,-,-,-,-,-,2,7,0
+44689,female,CogControl,S47,7 months,CogControl7_S47_44689,Monolinguals_fr,0y 8m 3d ,8,3,248,10,90,0,0,none,none,french,1,none,ok,-,-,-,-,-,2,23,0
+48228,male,CogControl,S48,7 months,CogControl7_S48_48228,Monolinguals_fr,0y 7m 19d ,7,19,233,0,100,0,0,none,none,french,1,none,ok,-,-,-,-,-,2,6,0
+48376,male,CogControl,S49,7 months,CogControl7_S49_48376,none_,0y 7m 22d ,7,22,236,0,9,76,16,arabic,berber,arabic,0,health,health premature,-,-,-,-,-,1,22,0
+46579,male,CogControl,S50,7 months,CogControl7_S50_46579,Monolinguals_eng,0y 7m 23d ,7,23,237,98,1,1,0,arabic,none,english,1,none,great baby!,-,-,-,-,-,2,12,0
+48331,male,CogControl,S51,7 months,CogControl7_S51_48331,Monolinguals_eng,0y 6m 23d ,6,23,207,97,3,0,0,none,none,english,1,none,great baby!,-,-,-,-,-,2,13,0
+48335,female,CogControl,S52,7 months,CogControl7_S52_48335,none_,0y 7m 28d ,7,28,242,83,10,7,0,italian,none,english,0,language,lang. criteria,-,-,-,-,-,2,12,0
+46739,female,CogControl,S53,7 months,CogControl7_S53_46739,Bilinguals_engfr,0y 7m 1d ,7,1,213,63,37,0,0,none,none,english,1,none,not super attentive,-,-,-,-,-,2,2,0
+48439,male,CogControl,S54,7 months,CogControl7_S54_48439,Bilinguals_engfr,0y 7m 25d ,7,25,240,62,38,0,0,none,none,english,1,none,"not attentive on tobii, kidney problem",-,-,-,-,-,1,6,0
+48392,female,CogControl,S55,7 months,CogControl7_S55_48392,Bilinguals_engfr,0y 7m 22d ,7,22,237,60,30,10,0,polish,none,english,1,none,Good baby,-,-,-,-,-,2,18,0
+46748,female,CogControl,S56,7 months,CogControl7_S56_46748,Monolinguals_eng,0y 7m 7d ,7,7,222,100,0,0,0,none,none,english,1,none,not attentive and had a little cold,-,-,-,-,-,2,13,0
+48655,male,CogControl,S57,7 months,CogControl7_S57_48655,Bilinguals_engfr,0y 7m 20d ,7,20,235,58,42,0,0,none,none,english,1,none,great baby,-,-,-,-,-,1,15,0
+47191,male,CogControl,S58,7 months,CogControl7_S58_47191,Monolinguals_eng,0y 7m 13d ,7,13,228,99,0,2,0,khasi,none,english,1,none,great kid!,-,-,-,-,-,2,NA,0
+48322,female,CogControl,S59,7 months,CogControl7_S59_48322,Bilinguals_other,0y 7m 8d ,7,8,220,0,56,44,0,arabic,none,french,1,none,good!,-,-,-,-,-,2,0,0
+48346,female,CogControl,S60,7 months,CogControl7_S60_48346,Monolinguals_eng,0y 7m 11d ,7,11,223,96,4,0,0,none,none,english,0,fussiness,not attentive on tobii,-,-,-,-,-,2,18,0
+48854,male,CogControl,S61,7 months,CogControl7_S61_48854,Bilinguals_other,0y 7m 12d ,7,12,227,59,0,41,0,mandarin,none,english,0,technical,bad calibration (only did middle and bottom right),-,-,-,-,-,2,20,0
+48404,female,CogControl,S62,7 months,CogControl7_S62_48404,Bilinguals_other,0y 8m 5d ,8,5,248,0,60,40,0,romanian,none,french,1,none,great baby!,-,-,-,-,-,1,25,0
+45572,male,CogControl,S63,7 months,CogControl7_S63_45572,Monolinguals_eng,0y 7m 1d ,7,1,213,95,5,0,0,none,none,english,1,none,great,-,-,-,-,-,2,6,0
+48350,female,CogControl,S64,7 months,CogControl7_S64_48350,Monolinguals_eng,0y 7m 12d ,7,12,224,90,6,4,0,spanish,none,english,1,none,good,-,-,-,-,-,2,1,0
+48340,female,CogControl,S65,7 months,CogControl7_S65_48340,none_,0y 7m 2d ,7,2,214,0,18,80,0,spanish,none,spanish,0,language,language criteria,-,-,-,-,-,2,0,0
+48210,female,CogControl,S66,7 months,CogControl7_S66_48210,Monolinguals_fr,0y 7m 6d ,7,6,218,0,100,0,0,none,none,french,1,none,wonderful kid!,-,-,-,-,-,2,4,0
+48428,male,CogControl,S67,7 months,CogControl7_S67_48428,Bilinguals_other,0y 7m 5d ,7,5,217,44,0,56,0,cantonese,none,cantonese,1,none,not really attentive at training,-,-,-,-,-,2,20,0
+48807,male,CogControl,S68,7 months,CogControl7_S68_48807,Monolinguals_fr,0y 7m 25d ,7,25,240,0,100,0,0,none,none,french,1,none,"not really attentive at the end, check",-,-,-,-,-,1,4,0
+48718,female,CogControl,S69,7 months,CogControl7_S69_48718,Bilinguals_engfr,0y 6m 27d ,6,27,211,35,65,0,0,none,none,french,1,none,great kid!,-,-,-,-,-,2,6,0
+48886,female,CogControl,S70,7 months,CogControl7_S70_48886,Bilinguals_other,0y 7m 4d ,7,4,216,34,0,66,0,tagalog,none,tagalog,1,none,good baby but low looking,-,-,-,-,-,1,26,0
+48413,female,CogControl,S71,7 months,CogControl7_S71_48413,Bilinguals_other,0y 6m 26d ,6,26,207,3,34,63,0,italian,none,italian,1,none,not attentive on tobii,-,-,-,-,-,2,8,0
+48719,male,CogControl,S72,7 months,CogControl7_S72_48719,Monolinguals_fr,0y 7m 10d ,7,10,222,0,100,0,0,none,none,french,1,none,somehow fussy,-,-,-,-,-,1,NA,0
+48736,female,CogControl,S73,7 months,CogControl7_S73_48736,Monolinguals_fr,0y 7m 24d ,7,24,236,6,94,0,0,none,none,french,1,none,top right dot not calibrated,-,-,-,-,-,2,16,0
+48688,male,CogControl,S74,7 months,CogControl7_S74_48688,Bilinguals_other,0y 7m 0d ,7,0,212,52,3,25,21,spanish,hakka,english,0,health,premature < 2500g,-,-,-,-,-,2,15,0
+47606,male,CogControl,S75,7 months,CogControl7_S75_47606,Monolinguals_eng,0y 6m 25d ,6,25,206,96,4,0,0,none,none,english,1,none,great baby!,-,-,-,-,-,1,7,0
+48701,male,CogControl,S76,7 months,CogControl7_S76_48701,Bilinguals_other,0y 7m 10d ,7,10,222,39,8,54,0,cantonese,none,cantonese,1,none,great kid,-,-,-,-,-,2,21,0
+48384,female,CogControl,S77,7 months,CogControl7_S77_48384,Monolinguals_eng,0y 7m 13d ,7,13,225,99,1,0,0,none,none,english,1,none,good,-,-,-,-,-,1,4,0
+48933,female,CogControl,S78,7 months,CogControl7_S78_48933,Monolinguals_fr,0y 8m 14d ,8,14,257,0,100,0,0,none,none,french,1,none,not attentive on tobii,-,-,-,-,-,2,8,0
+48652,female,CogControl,S79,7 months,CogControl7_S79_48652,Bilinguals_other,0y 6m 29d ,6,29,210,0,36,64,0,spanish,none,spanish,0,technical,calibration problem,-,-,-,-,-,2,8,0
+48917,female,CogControl,S80,7 months,CogControl7_S80_48917,Bilinguals_engfr,0y 6m 25d ,6,25,206,75,25,0,0,none,none,english,1,none,great kid but calibration problem,-,-,-,-,-,2,12,0
+47163,female,CogControl,S81,7 months,CogControl7_S81_47163,Bilinguals_other,0y 8m 7d ,8,7,250,35,5,59,0,italian,none,italian,1,none,good,-,-,-,-,-,2,6,0
+48856,female,CogControl,S82,7 months,CogControl7_S82_48856,Monolinguals_fr,0y 7m 5d ,7,5,217,0,100,0,0,none,none,french,1,none,amazing!,-,-,-,-,-,2,4,0
+48746,male,CogControl,S83,7 months,CogControl7_S83_48746,Monolinguals_fr,0y 6m 30d ,6,30,211,5,95,0,0,none,none,french,1,none,great,-,-,-,-,-,2,15,0
+46540,female,CogControl,S84,7 months,CogControl7_S84_46540,Bilinguals_engfr,0y 6m 25d ,6,25,206,38,62,0,0,none,none,french,1,none,good kid,-,-,-,-,-,2,12,0
+48626,female,CogControl,S85,7 months,CogControl7_S85_48626,Bilinguals_engfr,0y 7m 18d ,7,18,230,45,40,7,8,greek,arabic; italian,english,1,none,good,-,-,-,-,-,1,27,0
+48791,male,CogControl,S86,7 months,CogControl7_S86_48791,Monolinguals_fr,0y 7m 29d ,7,29,241,0,100,0,0,none,none,french,1,none,-,-,-,-,-,-,1,12,0
+48962,male,CogControl,S87,7 months,CogControl7_S87_48962,none_,0y 7m 27d ,7,27,239,82.5,17.5,0,0,none,none,english,0,language,language criteria,-,-,-,-,-,1,NA,0
+48985,female,CogControl,S88,7 months,CogControl7_S88_48985,Monolinguals_eng,0y 7m 23d ,7,23,235,98,2,0,0,none,none,english,0,health,premature (36 wks & 1 day),-,-,-,-,-,1,6,0
+48892,female,CogControl,S89,7 months,CogControl7_S89_48892,Bilinguals_other,0y 7m 12d ,7,12,224,27,17,56,0,arabic,none,arabic,1,none,good,-,-,-,-,-,2,23,0
+48332,female,CogControl,S90,7 months,CogControl7_S90_48332,Monolinguals_eng,0y 7m 13d ,7,13,225,99,1,0,0,none,none,english,1,none,great baby,-,-,-,-,-,1,16,0
+48976,female,CogControl,S91,7 months,CogControl7_S91_48976,Bilinguals_engfr,0y 8m 5d ,8,5,248,75,25,0,0,none,none,english,1,none,current exposure 79E 21F,-,-,-,-,-,1,0,0
+48926,female,CogControl,S92,7 months,CogControl7_S92_48926,Bilinguals_other,0y 7m 5d ,7,5,217,5,59,36,0,creole,none,french,1,none,great kid,-,-,-,-,-,2,21,0
+48709,male,CogControl,S93,7 months,CogControl7_S93_48709,Bilinguals_other,0y 7m 8d ,7,8,220,69,6,25,0,spanish,none,english,1,none,great,-,-,-,-,-,1,15,0
+48918,female,CogControl,S94,7 months,CogControl7_S94_48918,Bilinguals_other,0y 7m 11d ,7,11,223,11,63,26,0,creole,none,french,1,none,ok. I'm guessing a French-French/Creole bilingual is ok,-,-,-,-,-,2,9,0
+48442,female,CogControl,S95,7 months,CogControl7_S95_48442,Bilinguals_other,0y 7m 1d ,7,1,213,28,0,72,0,spanish,none,spanish,1,none,great,-,-,-,-,-,2,8,0
+48706,female,CogControl,S96,7 months,CogControl7_S96_48706,none_,0y 8m 7d ,8,7,249,84,16,0,0,none,none,english,0,language,lang criteria,-,-,-,-,-,2,20,0
+48919,female,CogControl,S97,7 months,CogControl7_S97_48919,Monolinguals_eng,0y 6m 28d ,6,28,210,100,0,0,0,none,none,english,1,none,sweet baby,-,-,-,-,-,2,2,0
+49257,female,CogControl,S98,7 months,CogControl7_S98_49257,Bilinguals_other,0y 7m 10d ,7,10,222,5,67,29,0,spanish,none,french,1,none,cute baby,-,-,-,-,-,2,5,0
+48755,female,CogControl,S99,7 months,CogControl7_S99_48755,Bilinguals_other,0y 8m 4d ,8,4,246,0,60,40,0,spanish,none,french,0,technical,check tobii (trouble calibrating),-,-,-,-,-,2,2,0
+49278,male,CogControl,S100,7 months,CogControl7_S100_49278,Bilinguals_other,0y 6m 23d ,6,23,204,30,39,32,0,spanish,none,french,1,none,great baby,-,-,-,-,-,2,9,0
+49301,female,CogControl,S101,7 months,CogControl7_S101_49301,Bilinguals_engfr,0y 6m 24d ,6,24,205,46,54,0,0,none,none,french,1,none,great kid,-,-,-,-,-,2,11,0
+48896,female,CogControl,S102,7 months,CogControl7_S102_48896,Bilinguals_engfr,0y 8m 5d ,8,5,248,73,27,0,0,none,none,english,1,none,good,-,-,-,-,-,1,5,0
+48923,female,CogControl,S103,7 months,CogControl7_S103_48923,Bilinguals_engfr,0y 7m 6d ,7,6,218,66,25,9,0,korean,none,english,1,none,great!,-,-,-,-,-,2,7,0
+49308,male,CogControl,S104,7 months,CogControl7_S104_49308,none_,0y 7m 27d ,7,27,239,9,0,91,0,armenian,none,armenian,0,language,language criteria,-,-,-,-,-,2,23,0
+49407,male,CogControl,S105,7 months,CogControl7_S105_49407,Bilinguals_other,0y 7m 0d ,7,0,212,37,13,51,0,serbian,none,serbian,1,none,good baby,-,-,-,-,-,2,0,0
+49057,male,CogControl,S106,7 months,CogControl7_S106_49057,Bilinguals_engfr,0y 6m 23d ,6,23,205,45,55,0,0,none,none,french,1,none,rad baby! super cute,-,-,-,-,-,2,24,0
+49263,male,CogControl,S107,7 months,CogControl7_S107_49263,Bilinguals_engfr,0y 7m 8d ,7,8,220,68,32,0,0,none,none,english,1,none,good baby,-,-,-,-,-,2,17,0
+49416,female,CogControl,S108,7 months,CogControl7_S108_49416,Bilinguals_other,0y 8m 8d ,8,8,251,5,30,65,0,german,none,german,0,other,wrong age,-,-,-,-,-,1,12,0
+42270,female,CogControl,S01,20 months,CogControl20_S01_42270,Bilinguals_engfr,1y 19m 25d ,19,25,605,66,34,0,0,none,none,english,1,none,great baby,191,73,264,212,52,1,3,1
+44614,male,CogControl,S02,20 months,CogControl20_S02_44614,Bilinguals_engfr,1y 20m 20d ,20,20,631,49,51,0,0,none,none,french,1,none,great kid,26,8,34,28,6,2,NA,1
+43721,male,CogControl,S03,20 months,CogControl20_S03_43721,Bilinguals_engfr,1y 20m 28d ,20,28,639,62,39,0,0,none,none,english,1,none,great baby but check fluid,43,36,79,64,15,1,12,1
+43753,female,CogControl,S04,20 months,CogControl20_S04_43753,none_,1y 20m 22d ,20,22,633,77.5,22.5,0,0,none,none,english,0,language,language criteria,54,17,71,61,10,2,7,1
+43676,female,CogControl,S05,20 months,CogControl20_S05_43676,Monolinguals_eng,1y 20m 18d ,20,18,629,98,0,2,0,portugese,none,english,1,none,great baby,194,-,194,194,0,2,0,1
+43679,male,CogControl,S06,20 months,CogControl20_S06_43679,Monolinguals_fr,1y 20m 10d ,20,10,621,5,95,0,0,none,none,french,1,none,Great baby but potentially low looking (hard to calibrate),3,12,15,13,2,2,22,1
+44700,female,CogControl,S07,20 months,CogControl20_S07_44700,none_,1y 20m 4d ,20,4,615,23,78,0,0,none,none,french,0,language,Great but lang. criteria,-,52,52,52,0,1,12,1
+43648,male,CogControl,S08,20 months,CogControl20_S08_43648,none_,1y 20m 19d ,20,19,630,0,9.62,90.38,0,russian,none,russian,0,language,lang criteria mono Russian; no CDI given,-,-,-,-,-,2,5,1
+44697,male,CogControl,S09,20 months,CogControl20_S09_44697,none_,1y 20m 8d ,20,8,618,14.09,85.91,0,0,none,none,french,0,language,Language criteria; mom never sent back CDI,-,-,-,-,-,2,6,1
+45541,male,CogControl,S10,20 months,CogControl20_S10_45541,none_,1y 20m 16d ,20,16,625,4,5,91,0,mandarin,none,mandarin,0,language,mono Chinese,3,8,11,10,1,2,22,1
+44651,male,CogControl,S11,20 months,CogControl20_S11_44651,Bilinguals_other,1y 20m 4d ,20,4,613,0,35,65,0,german,none,german,0,health,Premature,6,21,27,21,6,1,6,1
+44668,male,CogControl,S12,20 months,CogControl20_S12_44668,Monolinguals_eng,1y 20m 26d ,20,26,635,94,6,0,0,none,none,english,1,none,Great kid!,16,-,16,16,0,1,NA,1
+42816,male,CogControl,S13,20 months,CogControl20_S13_42816,Monolinguals_fr,1y 21m 6d ,21,6,646,0,100,0,0,none,none,french,1,none,Great kid!,-,39,39,39,0,1,3,1
+42456,female,CogControl,S14,20 months,CogControl20_S14_42456,Monolinguals_eng,1y 19m 27d ,19,27,605,94,0,7,0,romanian,none,english,1,none,"fussy, check if enough trials",16,-,16,16,0,1,7,1
+42702,female,CogControl,S15,20 months,CogControl20_S15_42702,Monolinguals_fr,1y 21m 7d ,21,7,647,0,100,0,0,none,none,french,1,none,"looked at mom a lot, check looking",NA,70,70,70,0,2,9,1
+42690,female,CogControl,S16,20 months,CogControl20_S16_42690,Bilinguals_other,1y 20m 18d ,20,18,627,0,39,61,0,kabyle,none,kabyle algeria,0,incomplete_cdi,Check looking time,-,9,9,9,0,2,18,1
+43915,female,CogControl,S17,20 months,CogControl20_S17_43915,Bilinguals_other,1y 20m 13d ,20,13,622,57,0,43,0,spanish,none,english,0,incomplete_cdi,Great!,404,-,404,404,0,1,19,1
+43621,female,CogControl,S18,20 months,CogControl20_S18_43621,Bilinguals_engfr,1y 20m 10d ,20,10,619,26,73,0,0,none,none,french,1,none,Great!,24,245,269,249,20,2,2,1
+43990,female,CogControl,S19,20 months,CogControl20_S19_43990,Monolinguals_fr,1y 20m 16d ,20,16,625,10,100,0,0,none,none,french,1,none,Great!,-,149,149,149,0,1,0,1
+43908,male,CogControl,S20,20 months,CogControl20_S20_43908,none_,1y 19m 27d ,19,27,605,81,13,5,0,arabic,none,english,0,language,language criteria,92,5,97,93,4,1,12,1
+43998,male,CogControl,S21,20 months,CogControl20_S21_43998,Monolinguals_fr,1y 20m 17d ,20,17,626,2,98,0,0,none,none,french,0,language,Possible language delay reported by doctor.,-,9,9,9,0,1,1,1
+43897,female,CogControl,S22,20 months,CogControl20_S22_43897,Bilinguals_engfr,1y 20m 29d ,20,29,638,69,31,0,0,none,none,english,1,none,"good, but looked at mom on some trials!",105,52,157,123,34,2,4,1
+43543,female,CogControl,S23,20 months,CogControl20_S23_43543,Monolinguals_eng,1y 21m 1d ,21,1,640,93,7,0,0,none,none,english,1,none,great!,369,23,392,377,15,2,12,1
+43152,female,CogControl,S24,20 months,CogControl20_S24_43152,Bilinguals_engfr,1y 20m 23d ,20,23,631,47,35,19,0,italian,none,english,1,none,great!,66,21,87,80,7,1,18,1
+42165,male,CogControl,S25,20 months,CogControl20_S25_42165,Monolinguals_fr,1y 20m 24d ,20,24,633,0,100,0,0,none,none,french,1,none,good,-,242,242,242,0,1,3,1
+43535,male,CogControl,S26,20 months,CogControl20_S26_43535,none_,1y 20m 13d ,20,13,621,80,17,3,0,spanish,none,english,0,language,language,28,3,31,29,2,2,13,1
+43622,male,CogControl,S27,20 months,CogControl20_S27_43622,none_,1y 20m 4d ,20,4,612,77,24,0,0,none,none,english,0,language,language,59,48,107,79,28,2,7,1
+44730,male,CogControl,S28,20 months,CogControl20_S28_44730,Monolinguals_fr,1y 20m 7d ,20,7,615,0,100,0,0,none,none,french,1,none,excellent!,-,11,11,11,0,2,4,1
+44681,male,CogControl,S29,20 months,CogControl20_S29_44681,Bilinguals_other,1y 20m 27d ,20,27,636,0,69,30,1,farsi,arabic,french,0,incomplete_cdi,NO CDI in FARSI great baby!,-,317,317,317,0,2,NA,1
+42880,male,CogControl,S30,20 months,CogControl20_S30_42880,Monolinguals_eng,1y 20m 17d ,20,17,625,100,0,0,0,none,none,english,1,none,looking less at end but good!,205,-,205,205,0,1,5,1
+44171,male,CogControl,S31,20 months,CogControl20_S31_44171,Monolinguals_fr,1y 19m 26d ,19,26,604,8,92,0,0,none,none,french,1,none,great baby!,-,30,30,30,0,1,16,1
+44170,female,CogControl,S32,20 months,CogControl20_S32_44170,Bilinguals_other,1y 20m 1d ,20,1,610,57,0,43,0,spanish,none,english,0,incomplete_cdi,excellent,48,-,48,48,0,1,18,1
+44136,male,CogControl,S33,20 months,CogControl20_S33_44136,Monolinguals_eng,1y 20m 9d ,20,9,618,100,0,0,0,none,none,english,1,none,Excellent!,27,-,27,27,0,2,1,1
+45196,male,CogControl,S34,20 months,CogControl20_S34_45196,Monolinguals_eng,1y 20m 12d ,20,12,621,100,0,0,0,none,none,english,0,fussiness,"VERY FUSSY, COULDN'T CALIBRATE, NO DATA",25,-,25,25,0,2,3,1
+44215,female,CogControl,S35,20 months,CogControl20_S35_44215,Monolinguals_fr,1y 20m 12d ,20,12,621,0,100,0,0,none,none,french,1,none,great baby!,-,64,64,64,0,1,12,1
+45123,female,CogControl,S36,20 months,CogControl20_S36_45123,Bilinguals_engfr,1y 21m 8d ,21,8,648,58,25,16,0,russian,none,english,1,none,great baby!,49,18,67,59,8,2,3,1
+44139,male,CogControl,S37,20 months,CogControl20_S37_44139,Monolinguals_eng,1y 20m 24d ,20,24,633,92,8,0,0,none,none,english,1,none,great!,32,-,32,32,0,2,8,1
+44153,male,CogControl,S38,20 months,CogControl20_S38_44153,none_,1y 20m 19d ,20,19,628,46,31,22,5,creole,patois,english,0,language,lang criteria French from 6m only,19,-,19,19,0,1,11,1
+44132,female,CogControl,S39,20 months,CogControl20_S39_44132,none_,1y 20m 21d ,20,21,630,89,11,0,0,none,none,english,0,language,language criteria,54,-,54,54,0,1,5,1
+42628,male,CogControl,S40,20 months,CogControl20_S40_42628,none_,1y 20m 8d ,20,8,617,85,15,0,0,none,none,english,0,language,"language, no calibration, NO DATA",43,-,43,43,0,1,5,1
+44743,male,CogControl,S41,20 months,CogControl20_S41_44743,Bilinguals_engfr,1y 21m 1d ,21,1,641,61,39,0,0,none,none,english,0,fussiness,very fussy barely looked at screen; CDI missing (done on paper),-,-,-,-,-,1,NA,1
+46629,male,CogControl,S42,20 months,CogControl20_S42_46629,Bilinguals_other,1y 21m 6d ,21,6,646,45,22,33,0,spanish,none,english,0,fussiness,"Very fussy after trial 5, no attention to test trials",44,43,87,69,18,1,15,1
+44236,male,CogControl,S43,20 months,CogControl20_S43_44236,Bilinguals_engfr,1y 21m 5d ,21,5,645,29,71,0,0,none,none,french,0,health,"Health problem, but great kid",3,57,60,58,2,1,3,1
+46131,female,CogControl,S44,20 months,CogControl20_S44_46131,Monolinguals_fr,1y 20m 20d ,20,20,628,0,100,0,0,none,none,french,1,none,Good baby but check calibration,-,67,67,67,0,1,7,1
+45605,female,CogControl,S45,20 months,CogControl20_S45_45605,Bilinguals_engfr,1y 19m 28d ,19,28,606,59,41,1,0,spanish,none,english,1,none,*baby mostly heard english from 2-7 months,72,38,110,88,22,1,14,1
+46230,female,CogControl,S46,20 months,CogControl20_S46_46230,Monolinguals_eng,1y 20m 8d ,20,8,616,99,1,0,0,none,none,english,1,none,excellent!,13,-,13,13,0,1,NA,1
+46257,female,CogControl,S47,20 months,CogControl20_S47_46257,none_,1y 20m 9d ,20,9,617,79,13,7,0,none,none,english,0,language,Language crite.,134,473,607,482,125,1,14,1
+46264,female,CogControl,S48,20 months,CogControl20_S48_46264,none_,1y 20m 7d ,20,7,615,5,74,22,0,creole,none,french,0,language,"great baby :( but lang, crit",-,140,140,140,0,2,8,1
+46664,female,CogControl,S49,20 months,CogControl20_S49_46664,Bilinguals_other,1y 21m 4d ,21,4,643,0,37,62,0,spanish,none,spanish,0,language,NOT simultaneous bilingual,-,1,1,1,0,2,NA,1
+45620,female,CogControl,S50,20 months,CogControl20_S50_45620,Monolinguals_fr,1y 20m 5d ,20,5,615,5,95,0,0,none,none,french,1,none,great baby no lang. mix,-,47,47,47,0,2,NA,1
+46236,male,CogControl,S51,20 months,CogControl20_S51_46236,Monolinguals_eng,1y 20m 17d ,20,17,625,99,1,0,0,none,none,english,1,none,great baby,40,-,40,40,0,1,12,1
+46156,male,CogControl,S52,20 months,CogControl20_S52_46156,Monolinguals_fr,1y 21m 3d ,21,3,642,3,97,0,0,none,none,french,1,none,Mom insisted on watching vid first with doors open so baby heard it but baby didn't see,-,34,34,34,0,2,11,1
+46258,female,CogControl,S53,20 months,CogControl20_S53_46258,Bilinguals_engfr,1y 20m 16d ,20,16,624,59,41,0,0,none,none,english,1,none,great baby,53,22,75,62,13,2,19,1
+46238,female,CogControl,S54,20 months,CogControl20_S54_46238,Monolinguals_fr,1y 20m 20d ,20,20,628,0,100,0,0,none,none,french,0,language,"possible lang. delay; baby didn't say any words, Dad said she just makes sounds; he didn't fill out CDI",-,-,-,-,-,2,0,1
+46215,male,CogControl,S55,20 months,CogControl20_S55_46215,Monolinguals_fr,1y 20m 24d ,20,24,632,0,100,0,0,none,none,french,1,none,"missed 2 trainings, 4 test",-,65,65,65,0,2,1,1
+44598,female,CogControl,S56,20 months,CogControl20_S56_44598,Bilinguals_engfr,1y 20m 13d ,20,13,621,41,48,11,0,italian,none,french,1,none,great baby,14,65,79,69,10,1,16,1
+46149,male,CogControl,S57,20 months,CogControl20_S57_46149,none_,1y 21m 6d ,21,6,645,29,31,41,0,greek,none,greek,0,language,French from 11 months only,90,-,90,90,0,1,27,1
+45706,female,CogControl,S58,20 months,CogControl20_S58_45706,Monolinguals_eng,1y 19m 26d ,19,26,605,100,0,0,0,none,none,english,1,none,great baby!,61,-,61,61,0,2,14,1
+46209,male,CogControl,S59,20 months,CogControl20_S59_46209,Bilinguals_engfr,1y 20m 29d ,20,29,637,51,49,0,0,none,none,english,1,none,Great baby,18,88,106,96,10,2,9,1
+43349,male,CogControl,S60,20 months,CogControl20_S60_43349,Bilinguals_engfr,1y 20m 19d ,20,19,629,35,65,0,0,none,none,french,0,parent,Good baby but mom was pointing sometimes,55,78,133,102,31,1,14,1
+45757,female,CogControl,S61,20 months,CogControl20_S61_45757,Bilinguals_engfr,1y 20m 0d ,20,0,610,64,36,0,0,none,none,english,1,none,Great kid but check video,23,24,47,43,4,1,11,1
+46680,female,CogControl,S62,20 months,CogControl20_S62_46680,Bilinguals_other,1y 20m 29d ,20,29,639,28,22,50,0,spanish,none,spanish,0,language,Eng from month 6 onward Dr report lang. delay possible,-,54,54,54,0,2,3,1
+45703,male,CogControl,S63,20 months,CogControl20_S63_45703,none_,1y 20m 18d ,20,18,628,23,77,0,0,none,none,french,0,language,language crit,15,230,245,232,13,2,1,1
+44611,female,CogControl,S64,20 months,CogControl20_S64_44611,Bilinguals_engfr,1y 20m 29d ,20,29,639,59,30,7.5,2.5,korean,berber,english,1,none,great baby but had pacifier,103,23,126,111,15,1,18,1
+48215,female,CogControl,S65,20 months,CogControl20_S65_48215,Bilinguals_engfr,1y 20m 13d ,20,13,623,64,36,0,0,none,none,english,0,fussiness,not super attentive,63,46,109,84,25,1,1,1
+45243,female,CogControl,S66,20 months,CogControl20_S66_45243,Monolinguals_fr,1y 20m 11d ,20,11,619,8,92,0,0,none,none,french,1,none,good,-,170,170,170,0,2,12,1
+45801,male,CogControl,S67,20 months,CogControl20_S67_45801,Bilinguals_engfr,1y 19m 26d ,19,26,606,35,34,31,0,spanish,none,english,1,none,great baby,40,46,86,56,30,1,24,1
+45590,female,CogControl,S68,20 months,CogControl20_S68_45590,none_,1y 20m 6d ,20,6,614,24,76,0,0,none,none,french,0,language,lang criteria,103,309,412,320,92,1,0,1
+45329,male,CogControl,S69,20 months,CogControl20_S69_45329,Monolinguals_eng,1y 20m 19d ,20,19,627,100,0,0,0,none,none,english,1,none,good,88,-,88,88,0,2,NA,1
+45278,female,CogControl,S70,20 months,CogControl20_S70_45278,Monolinguals_fr,1y 21m 0d ,21,0,639,3,97,0,0,none,none,french,1,none,unble to calibrate top right eye,2,152,154,152,2,2,9,1
+46700,male,CogControl,S71,20 months,CogControl20_S71_46700,Monolinguals_fr,1y 20m 15d ,20,15,623,0,100,0,0,none,none,french,1,none,great baby,-,84,84,84,0,2,4,1
+45221,male,CogControl,S72,20 months,CogControl20_S72_45221,none_,1y 20m 28d ,20,28,636,31,69,0,0,none,none,french,0,language,english only as of month 12,47,56,103,77,26,1,0,1
+44820,female,CogControl,S73,20 months,CogControl20_S73_44820,Monolinguals_fr,1y 20m 19d ,20,19,627,1,99,0,0,none,none,french,1,none,Good baby,-,106,106,106,0,2,NA,1
+46639,male,CogControl,S74,20 months,CogControl20_S74_46639,Bilinguals_other,1y 20m 0d ,20,0,608,23,43,34,0,spanish,none,french,0,language,lang criteria French from 9-m,-,42,42,42,0,1,4,1
+44784,male,CogControl,S75,20 months,CogControl20_S75_44784,Bilinguals_engfr,1y 20m 21d ,20,21,629,33,67,0,0,none,none,french,1,none,did not look on last trial,15,22,37,30,7,1,19,1
+47467,female,CogControl,S76,20 months,CogControl20_S76_47467,Bilinguals_other,1y 20m 9d ,20,9,616,53,23,25,0,patois,none,english,0,fussiness,"Did not finish study, just did training",67,-,67,67,0,1,19,1
+48561,male,CogControl,S77,20 months,CogControl20_S77_48561,Monolinguals_eng,1y 20m 24d ,20,24,632,100,0,0,0,none,none,english,1,none,good,72,-,72,72,0,2,0,1
+48777,male,CogControl,S78,20 months,CogControl20_S78_48777,none_,1y 21m 3d ,21,3,641,76,10,14,0,spanish,none,english,0,language,language criteria,384,-,384,384,0,1,2,1
+49262,female,CogControl,S79,20 months,CogControl20_S79_49262,Bilinguals_engfr,1y 20m 28d ,20,28,636,48,53,0,0,none,none,french,0,technical,No eyetracking data. See baby info,239,249,488,329,159,2,17,1
+47292,male,CogControl,S80,20 months,CogControl20_S80_47292,Bilinguals_other,1y 20m 9d ,20,9,616,8,60,33,0,spanish,none,french,0,incomplete_cdi,great baby,-,62,62,62,0,1,15,1
+47508,female,CogControl,S81,20 months,CogControl20_S81_47508,Monolinguals_fr,1y 20m 7d ,20,7,614,0,100,0,0,none,none,french,1,none,great baby,-,76,76,76,0,1,NA,1
+47537,male,CogControl,S82,20 months,CogControl20_S82_47537,Bilinguals_engfr,1y 20m 2d ,20,2,609,63,37,0,0,none,none,english,0,language,L2 at 4 months,9,4,13,9,4,2,9,1
+47262,female,CogControl,S83,20 months,CogControl20_S83_47262,Monolinguals_fr,1y 20m 17d ,20,17,624,0,100,0,0,none,none,french,1,none,Great baby but had a cold,NA,16,16,16,0,1,NA,1
+47396,female,CogControl,S84,20 months,CogControl20_S84_47396,Monolinguals_eng,1y 19m 26d ,19,26,603,92,8,0,0,none,none,english,1,none,Great kid,63,-,63,63,0,2,0,1
+47313,female,CogControl,S85,20 months,CogControl20_S85_47313,Bilinguals_engfr,1y 20m 14d ,20,14,621,47,53,0,0,none,none,french,0,fussiness,Very fussy at test,53,40,93,74,19,2,16,1
+49058,male,CogControl,S86,20 months,CogControl20_S86_49058,Bilinguals_engfr,1y 19m 25d ,19,25,602,51,50,0,0,none,none,english,1,none,Had toy In hand but very focused,36,43,79,57,22,2,15,1
+47266,female,CogControl,S87,20 months,CogControl20_S87_47266,Bilinguals_engfr,1y 20m 24d ,20,24,631,54,46,0,0,none,none,english,1,none,good,33,32,65,54,11,1,11,1
+47362,female,CogControl,S88,20 months,CogControl20_S88_47362,Monolinguals_fr,1y 20m 12d ,20,12,619,4,96,0,0,none,none,french,1,none,"great kid but had ear infection, but doctor said hearing is ok",-,89,89,89,0,1,7,1
+45798,female,CogControl,S89,20 months,CogControl20_S89_45798,Monolinguals_fr,1y 20m 9d ,20,9,616,3,97,0,0,none,none,french,1,none,"Good kid, no calibration on the right side",-,124,124,124,0,2,NA,1
+46638,female,CogControl,S90,20 months,CogControl20_S90_46638,none_,1y 20m 13d ,20,13,620,79,21,0,0,none,none,english,0,language,language criteria,202,-,202,202,0,1,10,1
+47381,female,CogControl,S91,20 months,CogControl20_S91_47381,Monolinguals_eng,1y 20m 16d ,20,16,623,98,2,0,0,none,none,english,1,none,good,481,-,481,481,0,2,11,1
+45552,male,CogControl,S92,20 months,CogControl20_S92_45552,Bilinguals_engfr,1y 20m 24d ,20,24,631,55,45,0,0,none,none,english,1,none,great baby,36,26,62,52,10,1,0,1
+48912,male,CogControl,S93,20 months,CogControl20_S93_48912,none_,1y 20m 9d ,20,9,617,86,0,14,0,lithuanian,none,english,0,language,lang. criteria,11,NA,11,11,0,1,9,1
+47315,female,CogControl,S94,20 months,CogControl20_S94_47315,none_,1y 21m 2d ,21,2,640,80,20,0,0,none,none,english,0,language,Lang crit. Not sim.,44,7,51,47,4,2,0,1
+47873,male,CogControl,S95,20 months,CogControl20_S95_47873,Bilinguals_engfr,1y 19m 29d ,19,29,606,48,52,0,0,none,none,french,1,none,good baby,42,38,80,74,6,2,18,1
+47568,male,CogControl,S96,20 months,CogControl20_S96_47568,none_,1y 20m 29d ,20,29,636,75,16,7,3,amharic,arabic,english,0,language,"language (otherwise, rad kid)",11,11,22,18,4,2,11,1
+47911,female,CogControl,S97,20 months,CogControl20_S97_47911,Bilinguals_other,1y 20m 21d ,20,21,629,36,19,46,0,spanish,none,spanish,0,parent,parental interference (pointing at 0:57 on video),61,89,150,108,42,2,14,1
+47893,male,CogControl,S98,20 months,CogControl20_S98_47893,Bilinguals_engfr,1y 20m 14d ,20,14,622,63,37,0,0,none,none,english,0,language,started French after 11 mo,53,-,53,53,0,2,28,1
+46078,male,CogControl,S99,20 months,CogControl20_S99_46078,Bilinguals_engfr,1y 20m 15d ,20,15,623,60,26,10,0,arabic,none,english,1,none,check video,28,14,42,34,8,1,24,1
+49060,male,CogControl,S100,20 months,CogControl20_S100_49060,Bilinguals_engfr,1y 20m 0d ,20,0,607,47,53,0,0,none,none,french,1,none,cute kid!,12,6,18,17,1,2,2,1
+46440,female,CogControl,S101,20 months,CogControl20_S101_46440,Bilinguals_engfr,1y 20m 4d ,20,4,611,65,35,0,0,none,none,english,1,none,good!,18,52,70,58,12,2,16,1
+46076,male,CogControl,S102,20 months,CogControl20_S102_46076,none_,1y 20m 28d ,20,28,635,24,68,8,0,yemba,none,french,0,language,language,33,100,133,108,25,1,11,1
+47994,female,CogControl,S103,20 months,CogControl20_S103_47994,Bilinguals_engfr,1y 20m 22d ,20,22,629,60,37,3,0,tibetan,none,english,0,incomplete_cdi,great!,78,-,78,78,0,1,2,1
+48056,male,CogControl,S104,20 months,CogControl20_S104_48056,Bilinguals_engfr,1y 20m 10d ,20,10,617,63,37,0,0,none,none,english,1,none,Great!,64,63,127,93,34,2,24,1
+48167,male,CogControl,S105,20 months,CogControl20_S105_48167,Bilinguals_engfr,1y 20m 16d ,20,16,624,55,41,4,0,romanian,none,english,1,none,Good kid,12,21,33,31,2,1,NA,1
+48817,male,CogControl,S106,20 months,CogControl20_S106_48817,Bilinguals_engfr,1y 20m 16d ,20,16,624,52,38,10,0,cantonese,none,english,1,none,Couldn't calibrate left side,22,10,32,25,7,2,30,1
+46339,male,CogControl,S107,20 months,CogControl20_S107_46339,Bilinguals_engfr,1y 20m 30d ,20,30,638,68,32,0,0,none,none,english,0,incomplete_cdi,Fussy during video,182,-,182,182,0,1,6,1
+48460,female,CogControl,S108,20 months,CogControl20_S108_48460,Bilinguals_engfr,1y 20m 14d ,20,14,622,44,56,0,0,none,none,french,0,parent,parental interference,64,54,118,86,32,2,6,1
+49279,male,CogControl,S109,20 months,CogControl20_S109_49279,Bilinguals_engfr,1y 20m 19d ,20,19,626,66,34,0,0,none,none,english,0,language,NOT simultaneous bilingual from birth,35,66,101,81,20,2,0,1
+48783,female,CogControl,S110,20 months,CogControl20_S110_48783,Bilinguals_engfr,1y 21m 3d ,21,3,641,31,69,0,0,none,none,french,1,none,Best baby ever (looks like Eleven from Stranger Things :)),43,191,234,202,32,2,7,1
+49064,male,CogControl,S111,20 months,CogControl20_S111_49064,none_,1y 20m 5d ,20,5,615,80,12,8,0,portugese,none,english,0,language,language criteria,297,36,333,305,28,2,11,1
+50129,female,CogControl,S112,20 months,CogControl20_S112_50129,Bilinguals_engfr,1y 21m 4d ,21,4,645,35,23,42,0,spanish,none,spanish,0,language,language criteria,13,11,24,19,5,1,NA,1
+50258,male,CogControl,S113,20 months,CogControl20_S113_50258,Bilinguals_engfr,1y 21m 2d ,21,2,643,30,59,11,0,khmer,none,french,1,none,Good kid,9,22,31,26,5,2,14,1
+49883,male,CogControl,S114,20 months,CogControl20_S114_49883,Bilinguals_engfr,1y 19m 26d ,19,26,605,51,49,0,0,none,none,english,1,none,"Amazing, super guapo boy :)",17,26,43,36,7,2,9,1
+48973,male,CogControl,S115,20 months,CogControl20_S115_48973,Bilinguals_engfr,1y 20m 17d ,20,17,627,45,55,0,0,none,none,french,1,none,Great baby,165,196,361,263,98,1,13,1
+48375,male,CogControl,S116,20 months,CogControl20_S116_48375,Bilinguals_engfr,1y 21m 7d ,21,7,645,69,31,0,0,none,none,english,1,none,Amazing baby,8,15,23,15,8,2,5,1
+51375,male,CogControl,S117,20 months,CogControl20_S117_51375,Bilinguals_engfr,1y 19m 17d ,19,17,597,80,20,0,0,none,none,english,0,language,age + language criteria,40,5,45,40,5,1,3,1
+49549,female,CogControl,S118,20 months,CogControl20_S118_49549,none_,1y 19m 27d ,19,27,607,24,76,0,0,none,none,french,0,language,amazing baby but not simultaneous + not bil,11,66,77,67,10,1,12,1
+48687,male,CogControl,S119,20 months,CogControl20_S119_48687,Bilinguals_engfr,1y 20m 6d ,20,6,614,28,65,7,0,mandarin,none,french,1,none,Great Kid,38,61,99,85,14,1,21,1

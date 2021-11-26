@@ -1,0 +1,28 @@
+The scripts in this R project were run in RStudio Version using R version 4.0.3.
+
+The following outlines the package versions that were used to produce all analyses.
+
+tidyverse - version 1.3.0 from CRAN
+janitor - version 2.0.1 from CRAN
+patchwork - version 1.1.0 from CRAN
+grDevices - version 4.0.3 from CRAN
+RColorBrewer - version 1.1.2 from CRAN
+here - version 1.0.0 from CRAN
+lme4 - version 1.1.25 from CRAN
+effects - version 0.16.0 from CRAN
+emmeans - version 1.5.2.1 from CRAN
+interactions - version 1.1.3 from CRAN
+car - version 4.2.0 from CRAN
+ez - version 4.4.0 from CRAN
+ggpubr - version 0.4.0 from CRAN
+apa - version 0.3.3 from CRAN
+apaTables - version 2.0.5 from CRAN
+gt - version 0.2.2 from CRAN
+flextable - version 0.5.11 from CRAN
+sjPlot - version 2.8.6 from CRAN
+htmltools - version 0.5.0 from CRAN
+eyetrackingR - version 0.1.8 from GitHub https://github.com/jwdink/eyetrackingR
+readxl - version 1.3.1 from CRAN
+tidylog - version 1.0.2 from CRAN
+fuzzyjoin - version 0.1.6 from CRAN
+lubridate - version 1.7.9.2 from CRAN

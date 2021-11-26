@@ -1,0 +1,38 @@
+Article: Dal Ben, R., Killam, H., Iliaei, S. P.,  & Byers-Heinlein, K. (under review). Bilingualism affects infant cognition: Evidence from new and reanalyzed data.
+OSF: https://osf.io/bz8jn/
+
+Code book for "descriptive_dataset_1_3.csv"
+
+Feedback and suggestions: 
+<kbh.coordinator@concordia.ca>, <dalbenwork@gmail.com>, <k.byers@concordia.ca>
+
+Variables:
+- baby_id: factor, unique identifier for participant in any study;
+- gender: factor, infant participant's gender, levels are "male" or "female"
+- study: character, name of the study;
+- study_id: factor, unique identifier for participant in this specific study;
+- age_group: factor, child's broad age group, either "7 months" or "20 months";
+- recording_name: factor, unique identifier as recorded by the eyetracker;
+- lang_group: factor, language group. Monolinguals, at least 90% exposure to either english or french; Bilinguals, at least 25% exposure to 2 languages, either english and french or english/french and other; or none (participant did not meet monolingual or bilingual language criteria)
+- full_baby_age: factor, participant's full age (years, months, days);
+- months: integer, months portion of participant's age (not rounded);
+- days: integer, days portion of participant's age;
+- total_age_days_excel: integer, participant's full age in days;
+- per_eng: numerical, percentage of exposure to English;
+- per_fr: numerical, percentage of exposure to French;
+- per_other1: numerical, percentage of exposure to a language other than English or French;
+- per_other2: numerical, percentage of exposure to a language other than English or French;
+- other_lang1: factor, name of the language for other1 (except English or French);
+- other_lang2: factor, name of the language for other2 (except English or French);
+- dom_lang: factor, name of the dominant language;
+- keeper: integer, 1 = the infant is included in the analysis, 0 = the infant is excluded;
+- excl_reason: factor, reason for exclusion;
+- comments: character, additional comment on the infant exclusion;
+- cdi_prod_eng: factor, level of productive vocabulary for English as scored on the CDI (NA for 7-m-olds and French monolinguals);
+- cdi_prod_fr: numeric, level of productive vocabulary for French as scored on the CDI (NA for 7-m-olds and English monolinguals);
+- total_vocab_prod: numeric, total productive vocabulary as scored on the CDI;
+- total_concept_prod: numeric, total conceptual vocabulary (the number of concepts understood in English and French combined) as scored on the CDI;
+- te_prod: translation equivalents (the number of words with the same meaning known in both English and French) as scored on the CDI;
+- study_order: integer, order of the study; 1 indicates that the target was on the left during training and on the right during test, 2 indicates that the target was on the right during training and on the left during test
+- lang_mix: score from the language mixing questionnaire, describing how often parents mix languages in everyday life;
+- years: integer, years portion of the participant's age (not rounded)

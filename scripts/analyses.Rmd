@@ -1,26 +1,27 @@
 ---
-title: "Analyses Script - Iliaei et al. (2020)"
+title: "Analyses Script - Dal Ben et al. (2021)"
 author: "Hilary Killam and Rodrigo Dal Ben"
 date: "2021-06-04"
 output: html_document
 ---
 
-Article: Iliaei, S. P., Killam, H., Dal Ben, R., & Byers-Heinlein, K. (under review). Bilingualism affects infant cognition: Insights from new and open data.
+Article: Dal Ben, R., Killam, H., Iliaei, S. P., & Byers-Heinlein, K. (under review). Bilingualism affects infant cognition: Insights from new and open data.
 
 This script was written by Hilary Killam and Rodrigo Dal Ben.
 
-It analyses two new datasets (Study 1a & 2) and reanalyzes three open datasets (Study 1b, 1c, 1d).
+It analyses two new datasets (Studies 1 & 3) and reanalyzes three open datasets (Studies 2a, 2b, 2c).
 The reanalyzed datasets come from: 
 
-Study 1b: 
+Study 2a: 
 D'Souza et al. (2020)
 - article: https://doi.org/10.1098/rsos.180191 
 - OSF: https://osf.io/53gh2/
 - Dryad: https://doi.org/10.5061/dryad.3n5tb2rc6 
 
-Studies 1c & 1d: 
+Studies 2b & 2c: 
 Kalashnikova et al. (2020):
 - article: https://doi.org/10.1111/desc.13011
+- corrigendum: https://doi.org/10.1111/desc.13139
 - OSF: https://osf.io/k3e9z/
 
 Feedback and suggestions: 
@@ -28,24 +29,25 @@ Feedback and suggestions:
 
 # User defined parameters
 
-Please indicate which study (1a, 1b, 1c, 1d, or 2) and which sample (filtered or unfiltered) you want to analyze. For Study 2 - filtered sample, it is also possible to include `vocabulary` as a predictor. 
+Please indicate which study (1, 2a, 2b, 2c, or 3) and which sample (filtered or unfiltered) you want to analyze. For Study 3 - filtered sample, it is also possible to include `vocabulary` as a predictor. 
 
-```{r setup, include=FALSE}
+```{r}
 
-#renv::restore() #restore from renv snapshot to make sure project uses correct version of packages
+renv::restore() #restore from renv snapshot to make sure project uses correct version of packages
 
 ```
 
 
 ```{r}
-study <- "1a" # options: "1a", "1b", "1c", "1d", "2"
+study <- "1" # options: "1", "2a", "2b", "2c", "3"
 filtered <- TRUE # options: TRUE = "filtered" OR FALSE = "unfiltered"
 
 # TRUE can only be selected for vocabulary if 
-# study <- "2" & filtered == TRUE; 
+# study <- "3" & filtered == TRUE; 
 # and you want vocabulary as predictor
 # otherwise, leave FALSE
 vocabulary <- FALSE # options: TRUE or FALSE
+
 ```
 
 All the next steps will be performed, automatically, according to the parameters you have selected.
@@ -78,7 +80,7 @@ library(apaTables)
 library(gt)
 library(flextable)
 library(sjPlot)
-library(htmltools) ## test multple outputs
+library(htmltools) ## test multiple outputs
 
 library(eyetrackingR) 
 
@@ -86,7 +88,7 @@ options(scipen = 999) # remove scientific notation
 
 `%notin%` <- Negate(`%in%`)
 kovacs09 <- "Kovács & Mehler 2009"
-blues_palette <- colorRampPalette(c("#C6DBEF", "#081D58"))
+blues_palette <- colorRampPalette(c("#C6DBEF", "#082c58"))
 blues <- blues_palette(12)
 ```
 
@@ -94,13 +96,16 @@ blues <- blues_palette(12)
 
 ```{r}
 # check user defined parameters & name dataset
-if ((study == "1a" | study == "1b" | study == "1c" | study == "1d" | study == "2") & (filtered == TRUE | filtered == FALSE)){
+if ((study == "1" | study == "2a" | study == "2b" | study == "2c" | study == "3") & (filtered == TRUE | filtered == FALSE)){
   
-  if (filtered == TRUE & study != "2"){dataset = paste(study, "filtered", sep = "_")
-  } else if (filtered == TRUE & study == "2"){
+  if (filtered == TRUE & study != "3"){dataset = paste(study, "filtered", sep = "_")
+  } else if (filtered == TRUE & study == "3"){
   
     if (vocabulary == TRUE){dataset = paste(study, "filtered", "vocabulary", sep = "_") 
     } else {dataset = paste(study, "filtered", sep = "_")}
+    
+  } else if (filtered == FALSE & study == "3" & vocabulary == TRUE){dataset = "ERROR"
+  print("Please review the parameters you have selected in the previous code chunk. We didn't find a matching pattern.")
     
   } else if (filtered == FALSE){dataset = paste(study, "unfiltered", sep = "_")}
 
@@ -116,7 +121,7 @@ if (filtered == TRUE){
   
   filtered_name <- "filtered"
   
-  if (study == "1a" | study == "1b" | study == "2"){
+  if (study == "1" | study == "2a" | study == "3"){
     MIN_LOOK_PROPORTION <- .5
     MIN_NUMBER_TRIALS <- 5
   } else {
@@ -139,41 +144,29 @@ if (filtered == TRUE){
 }
 
 # load data & set anticipation interval
-if (study == "1a" | study == "2"){
+if (study == "1" | study == "3"){
   
   ANTICIP_START_OFF <-  2000 + 150 # anticipation start + offset 
   ANTICIP_END_OFF <-  3000 + 150 # anticipation end + offset 
   
   #Exclusion data (includes everyone -- excluded and included)
-  load(here("output/data/exclusions_1a_2.Rda"))
+  load(here("output/data/exclusions_1_3.Rda"))
   exclusions_dataset <- 
-    exclusions_1a_2 %>% 
+    exclusions_1_3 %>% 
     mutate(id = recording_name)
 
   if(filtered == TRUE){
     
-    load(here("output/data/data_full_trials_filtered_1a_2.rda")) 
+    load(here("output/data/data_full_trials_filtered_1_3.rda")) 
     analysis_dataset = 
-      data_full_trials_filtered_1a_2 %>% 
+      data_full_trials_filtered_1_3 %>% 
       mutate(id = recording_name)
     
-    load(here("output/data/final_sample_mslist_1a_2.Rda"))
-    #fix one date of birth that is wrong in MSL
-    final_sample_mslist_1a_2 <- 
-      final_sample_mslist_1a_2 %>%
-      mutate(do_birth = case_when(baby_id == 45798 ~
-                                    lubridate::ymd(20160924),
-                              TRUE ~ lubridate::ymd(do_birth)),
-         months = case_when(baby_id == 45798 ~ 20,
-                            TRUE ~ months),
-         days = case_when(baby_id == 45798 ~ 9,
-                          TRUE ~ days),
-         total_age_days_excel = case_when(baby_id == 45798 ~ 616,
-                                          TRUE ~ total_age_days_excel),
-         id = recording_name
-         )
+    load(here("output/data/descriptive_filtered_1_3.Rda"))
     
-    descriptive_dataset <- final_sample_mslist_1a_2
+    
+    descriptive_dataset <- descriptive_filtered_1_3 %>% 
+      rename(id = recording_name)
     
     if (vocabulary == TRUE){
       
@@ -184,8 +177,8 @@ if (study == "1a" | study == "2"){
       
       analysis_dataset <- 
         descriptive_dataset %>%
-        select(recording_name) %>%
-        inner_join(analysis_dataset, by = "recording_name")
+        select(id) %>%
+        inner_join(analysis_dataset, by = "id")
       
       
       OVERALL_VOCAB_MEDIAN <- 
@@ -197,27 +190,16 @@ if (study == "1a" | study == "2"){
     
   } else if (filtered == FALSE){
     
-    load(here("output/data/data_full_trials_unfiltered_1a_2.rda")) 
+    load(here("output/data/data_full_trials_unfiltered_1_3.rda")) 
     analysis_dataset = 
-      data_full_trials_unfiltered_1a_2 %>% 
+      data_full_trials_unfiltered_1_3 %>% 
       mutate(id = recording_name)
     
-    load(here("output/data/ms_list_unfiltered_1a_2.Rda"))
+    load(here("output/data/descriptive_unfiltered_1_3.Rda"))
     #fix one date of birth that is wrong in MSL
-    ms_list_unfiltered_1a_2 <- 
-      ms_list_unfiltered_1a_2 %>%
-      mutate(do_birth = case_when(baby_id == 45798 ~
-                                    lubridate::ymd(20160924),
-                              TRUE ~ lubridate::ymd(do_birth)),
-         months = case_when(baby_id == 45798 ~ 20,
-                            TRUE ~ months),
-         days = case_when(baby_id == 45798 ~ 9,
-                          TRUE ~ days),
-         total_age_days_excel = case_when(baby_id == 45798 ~ 616,
-                                          TRUE ~ total_age_days_excel),
-         id = recording_name)
     
-    descriptive_dataset <- ms_list_unfiltered_1a_2
+    descriptive_dataset <- descriptive_unfiltered_1_3 %>%
+      rename(id = recording_name)
     
   } else {
     
@@ -245,22 +227,26 @@ if (study == "1a" | study == "2"){
   edu_data <- descriptive_dataset %>%
     left_join(edu_years, by = "mother_edu_raw") 
   
-} else if (study == "1b"){
+} else if (study == "2a"){
   
   ANTICIP_START_OFF <- 3000 + 150 # anticipation start + offset 
   ANTICIP_END_OFF <- 4000 + 150 # anticipation end + offset 
 
   if(filtered == TRUE){
     
-    load(here("output/data/data_full_trials_filtered_1b.rda")) 
-    analysis_dataset <- data_full_trials_filtered_1b
-    descriptive_dataset <- data_full_trials_filtered_1b
+    load(here("output/data/data_full_trials_filtered_2a.rda")) 
+    data_full_trials_filtered_2a <- data_full_trials_filtered_1b
+    rm(data_full_trials_filtered_1b)
+    analysis_dataset <- data_full_trials_filtered_2a
+    descriptive_dataset <- data_full_trials_filtered_2a
     
   } else if (filtered == FALSE){
     
-    load(here("output/data/data_full_trials_unfiltered_1b.rda")) 
-    analysis_dataset <- data_full_trials_unfiltered_1b
-    descriptive_dataset <- data_full_trials_unfiltered_1b
+    load(here("output/data/data_full_trials_unfiltered_2a.rda")) 
+    data_full_trials_unfiltered_2a <- data_full_trials_unfiltered_1b
+    rm(data_full_trials_unfiltered_1b)
+    analysis_dataset <- data_full_trials_unfiltered_2a
+    descriptive_dataset <- data_full_trials_unfiltered_2a
     
   } else {
    
@@ -269,22 +255,22 @@ if (study == "1a" | study == "2"){
     
   }
   
-} else if (study == "1c"){
+} else if (study == "2b"){
   
   ANTICIP_START_OFF <- 3500 + 150 # anticipation start + offset 
   ANTICIP_END_OFF <- 4500 + 150 # anticipation end + offset 
 
   if(filtered == TRUE){
     
-    load(here("output/data/data_full_trials_filtered_1c.rda")) 
-    analysis_dataset <- data_full_trials_filtered_1c
-    descriptive_dataset <- data_full_trials_filtered_1c
+    load(here("output/data/data_full_trials_filtered_2b.rda")) 
+    analysis_dataset <- data_full_trials_filtered_2b
+    descriptive_dataset <- data_full_trials_filtered_2b
 
   } else if (filtered == FALSE){
     
-    load(here("output/data/data_full_trials_unfiltered_1c.rda")) 
-    analysis_dataset <- data_full_trials_unfiltered_1c
-    descriptive_dataset <- data_full_trials_unfiltered_1c
+    load(here("output/data/data_full_trials_unfiltered_2b.rda")) 
+    analysis_dataset <- data_full_trials_unfiltered_2b
+    descriptive_dataset <- data_full_trials_unfiltered_2b
 
   } else {
     
@@ -293,22 +279,22 @@ if (study == "1a" | study == "2"){
     
   }
   
-} else if (study == "1d"){
+} else if (study == "2c"){
   
   ANTICIP_START_OFF <- 2200 + 150 # anticipation start + offset 
   ANTICIP_END_OFF <- 3200 + 150 # anticipation end + offset 
 
   if(filtered == TRUE){
     
-    load(here("output/data/data_full_trials_filtered_1d.rda")) 
-    analysis_dataset <- data_full_trials_filtered_1d
-    descriptive_dataset <- data_full_trials_filtered_1d
+    load(here("output/data/data_full_trials_filtered_2c.rda")) 
+    analysis_dataset <- data_full_trials_filtered_2c
+    descriptive_dataset <- data_full_trials_filtered_2c
     
   } else if (filtered == FALSE){
     
-    load(here("output/data/data_full_trials_unfiltered_1d.rda")) 
-    analysis_dataset <- data_full_trials_unfiltered_1d 
-    descriptive_dataset <- data_full_trials_unfiltered_1d 
+    load(here("output/data/data_full_trials_unfiltered_2c.rda")) 
+    analysis_dataset <- data_full_trials_unfiltered_2c 
+    descriptive_dataset <- data_full_trials_unfiltered_2c 
     
   } else {
     
@@ -328,26 +314,18 @@ if (study == "1a" | study == "2"){
 
 # Descriptives 
 
-Note. Socio-economic-status was calculated differently for each study. Study 1a and 2 measured the mother educational level. Study 1b used "a composite of four weighted scores based on the carers’ (1) postcode (as an index of socioeconomic deprivation), (2) education attainment, (3) household income and (4) occupation." (D'Souza et al., 2020, p. 4). Study 1c and 1d measured both educational and income level. Here we calculate the descriptive statistics on educational level.
+Note. Socio-economic-status was calculated differently for each study. Study 1 and 2 measured the mother educational level. Study 2a used "a composite of four weighted scores based on the carers’ (1) postcode (as an index of socioeconomic deprivation), (2) education attainment, (3) household income and (4) occupation." (D'Souza et al., 2020, p. 4). Study 2b and 2c measured both educational and income level. Here we calculate the descriptive statistics on educational level.
 
 The following are available for some studies:
-- sample count for age group (1a and 2);
-- exclusion reason (1a and 2 filtered);
+- sample count for age group (1 and 2);
+- exclusion reason (1 and 2 filtered);
 
 ```{r}
 ###------------------------------------------------FINAL SAMPLE COUNTS PER AGE--------------------------------------
-if (study == "1a" | study == "2"){
+if (study == "1" | study == "3"){
   
   descriptive_dataset %>% 
-  mutate(do_birth = lubridate::ymd(do_birth),
-         do_participation = lubridate::ymd(do_participation),
-         age_interval = lubridate::interval(do_birth, do_participation),
-         age_total = lubridate::as.period(age_interval),
-         years = lubridate::year(age_total),
-         months = lubridate::month(age_total),
-         days = lubridate::day(age_total),
-         months = years*12 + months) %>%
-  select(-age_interval, -age_total, -years) %>%
+    mutate(months = years*12 + months) %>% 
   group_by(age_group) %>%
   summarize(count = length(unique(id)),
             avg_age_days = floor(mean(total_age_days_excel, na.rm =
@@ -363,7 +341,7 @@ if (study == "1a" | study == "2"){
             max_age = max_age_days/30.436875,
             max_months = floor(max_age),
             max_days = floor((max_age - max_months) * 30.436875),            
-            num_female = sum(gender == 1)) %>%
+            num_female = sum(gender == "female")) %>%
   select(-avg_age_days, -min_age_days, -max_age_days, -avg_age, -min_age, -max_age)
   
 #--------------------------------------SES comparison t-test
@@ -380,8 +358,9 @@ if (study == "1a" | study == "2"){
   mutate(cohen_d = statistic/sqrt(parameter +1))
 
 
+
   
-} else if (study == "1b" | study == "1c" | study == "1d"){
+} else if (study == "2a" | study == "2b" | study == "2c"){
   
   descriptive_dataset %>% 
     distinct(id, gender, age_in_days) %>% 
@@ -396,7 +375,7 @@ if (study == "1a" | study == "2"){
 
 ```{r}
 ###------------------------------------------------FINAL SAMPLE COUNTS PER AGE GROUP--------------------------------------
-if (study == "1a" | study == "2"){
+if (study == "1" | study == "3"){
   
   descriptive_dataset %>% 
     group_by(language, age_group) %>%
@@ -415,7 +394,7 @@ if (study == "1a" | study == "2"){
               max_age = max_age_days/30.436875,
               max_months = floor(max_age),
               max_days = floor((max_age - max_months) * 30.436875),            
-              num_female = sum(gender == 1)) %>%
+              num_female = sum(gender == "female")) %>%
     select(-avg_age_days, -min_age_days, -max_age_days, -avg_age,
            -min_age, -max_age)
 }
@@ -423,13 +402,13 @@ if (study == "1a" | study == "2"){
 
 ```{r}
 ###-----------------------------------------------FINAL SAMPLE COUNTS PER VOCAB GROUP------------------------------
-if (study == "2" & filtered == TRUE & vocabulary == TRUE){
+if (study == "3" & filtered == TRUE & vocabulary == TRUE){
 
   print(
     descriptive_dataset %>%
     filter(age_group == "20 months") %>%
     group_by(language, vocab_group) %>%
-    summarize(count = length(unique(recording_name)),
+    summarize(count = length(unique(id)),
               vocab_median = median(cdi_tot_vocab_prod, na.rm = TRUE), 
               vocab_mean = mean(cdi_tot_vocab_prod, na.rm = TRUE),
               avg_age_days = mean(total_age_days_excel, na.rm = TRUE),
@@ -454,13 +433,13 @@ if (study == "2" & filtered == TRUE & vocabulary == TRUE){
 
 ```{r}
 ###-----------------------------------------------FINAL SAMPLE COUNTS PER LANG BACKGROUND------------------------------
-if (study == "1a" | study == "2"){
+if (study == "1" | study == "3"){
 
   descriptive_dataset %>% 
     group_by(age_group, language, group) %>%
     summarize(count = length(unique(id)))
 
-} else if (study == "1b" | study == "1c" | study == "1d"){
+} else if (study == "2a" | study == "2b" | study == "2c"){
   
   descriptive_dataset %>%
     distinct(id, language) %>% 
@@ -472,7 +451,7 @@ if (study == "1a" | study == "2"){
 
 ```{r}
 ###-----------------------------------------------FINAL SAMPLE COUNTS PER EXCLUSION REASON--------------------------
-if ((study == "1a" | study == "2") & filtered == TRUE){
+if ((study == "1" | study == "3") & filtered == TRUE){
   
   exclusions_dataset %>%
     count(age_group, excl_reason) %>%
@@ -483,7 +462,7 @@ if ((study == "1a" | study == "2") & filtered == TRUE){
 
 ```{r}
 ###----------------------------------------------------------COMPARE GROUPS------------------------------
-if (study == "1a"){
+if (study == "1"){
 
   # age
   summary_7 <- 
@@ -499,7 +478,7 @@ if (study == "1a"){
     facet_wrap(~ language) +
     labs(subtitle = paste("Study", study, sep = " "))
   
-} else if (study == "2"){
+} else if (study == "3"){
   
   # age
   summary_20 <- 
@@ -515,7 +494,7 @@ if (study == "1a"){
     facet_wrap(~ language) +
     labs(subtitle = paste("Study", study, sep = " "))
   
-} else if (study == "1b" | study == "1c" | study == "1d"){
+} else if (study == "2a" | study == "2b" | study == "2c"){
   
   # age & gender
   age_summary <- 
@@ -544,18 +523,19 @@ if (study == "1a"){
 
 ```{r}
 ###----------------------------------------------------------COMPARE MATERNAL EDUCATION------------------------------
-if (study == "1a" | study == "2"){
+if (study == "1" | study == "3"){
   
   descriptive_dataset %>% 
     mutate(mother_edu = case_when(is.na(mother_edu) ~ "other",
                                   TRUE ~ mother_edu)) %>%
     group_by(age_group, language) %>%
     count(mother_edu) %>%
+    group_by(age_group, language) %>%
     mutate(pct = n/sum(n)) %>%
     arrange(age_group, language, desc(n))
 
 
-} else if (study == "1b"){
+} else if (study == "2a"){
   
   ses_summary <- 
     descriptive_dataset %>% 
@@ -567,7 +547,7 @@ if (study == "1a" | study == "2"){
     geom_histogram(binwidth = 0.05) +
     facet_wrap(~ language)
 
-} else if (study == "1c" | study == "1d"){
+} else if (study == "2b" | study == "2c"){
  
   ses_summary <- 
     descriptive_dataset %>% 
@@ -584,17 +564,19 @@ if (study == "1a" | study == "2"){
 
 # Language tables
 
-Language tables are available for Studies 1a and 2, for the unfiltered sample. 
+Language tables are available for Studies 1 and 3, for the unfiltered sample. 
 
-For study 1b, D'Souza et al. (2020) article and supplementals do not provide information about participants' dominant/other languages or the percentages of exposure to different languages. Unable to produce language tables.
+For study 2a, D'Souza et al. (2020) article and supplementals do not provide information about participants' dominant/other languages or the percentages of exposure to different languages. Unable to produce language tables.
 
 ```{r tables}
 ##---------------------------------------------------------------- LANGUAGE TABLES------------------------------ 
-if ((study == "1a" | study == "2") & filtered == FALSE){
+if ((study == "1" | study == "3") & filtered == FALSE){
 
-  load(here("output/data/final_sample_mslist_1a_2.Rda"))
+  load(here("output/data/descriptive_filtered_1_3.Rda")) 
+  descriptive_filtered_1_3 <- descriptive_filtered_1_3 %>%
+    rename(id = recording_name)#load filtered descriptives for comparing
   
-  if (study == "1a"){
+  if (study == "1"){
     
     lt <- 
       descriptive_dataset %>%
@@ -609,7 +591,7 @@ if ((study == "1a" | study == "2") & filtered == FALSE){
   }
 
   lt %>%
-  select(recording_name, dom_lang, per_eng, per_fr, other_lang1, per_other1) %>%
+  select(id, dom_lang, per_eng, per_fr, other_lang1, per_other1) %>%
   pivot_longer(cols = c(per_eng, per_fr, per_other1), names_to = "lang", values_to = "lang_percent") %>%
   mutate(lang = str_remove(lang, "per_"),
          lang = case_when(lang == "eng" ~ "English",
@@ -617,32 +599,32 @@ if ((study == "1a" | study == "2") & filtered == FALSE){
                           lang == "other1" ~ other_lang1,
                           TRUE ~ "oops"),
          lang = str_to_title(lang)) %>%
-  group_by(recording_name) %>%
+  group_by(id) %>%
   mutate(lang_order = case_when(lang_percent == max(lang_percent) ~ "L1",
                                 lang_percent == min(lang_percent) ~ "L3",
                                 TRUE ~ "L2")) %>%
   ungroup() %>%
   mutate(lang_percent = paste0(lang, "_", lang_percent)) %>%
-  pivot_wider(names_from = lang_order, values_from = lang_percent, id_cols = "recording_name") %>%
+  pivot_wider(names_from = lang_order, values_from = lang_percent, id_cols = "id") %>%
   separate(L1, into = c("L1", "L1_pct"), sep = "_") %>%
   separate(L2, into = c("L2", "L2_pct"), sep = "_") %>%
   separate(L3, into = c("L3", "L3_pct"), sep = "_") %>%
-  select(recording_name, L1, L1_pct, L2, L2_pct, L3, L3_pct) %>%
+  select(id, L1, L1_pct, L2, L2_pct, L3, L3_pct) %>%
   rename(`Dominant Languge` = L1,
          `Non-Dominant Language` = L2,
          `Third Language` = L3,
          `% 1` = L1_pct,
          `% 2` = L2_pct,
          `% 3` = L3_pct) %>%
-  mutate(id = row_number(),
+  mutate(id2 = row_number(),
          `Third Language` = case_when(`% 3` == "0" ~ "",
                                       TRUE ~ `Third Language`),
          `% 3` = case_when(`% 3` == "0" ~ "",
                            TRUE ~ `% 3`),
-         `Filtered Sample` = case_when(recording_name %in% final_sample_mslist_1a_2$recording_name ~ "yes",
+         `Filtered Sample` = case_when(id %in% descriptive_filtered_1_3$id ~ "yes",
                                        TRUE ~ "no")) %>%
-  select(-recording_name) %>%
-  select(`participant` = id, 1:6, `Filtered Sample`) %>%
+  select(-id) %>%
+  select(`participant` = id2, 1:6, `Filtered Sample`) %>%
   flextable() %>%
   set_header_labels(`Dominant Languge` = "language",
              `Non-Dominant Language` = "language",
@@ -659,9 +641,9 @@ if ((study == "1a" | study == "2") & filtered == FALSE){
   italic(i = 1, part = "header")  %>% 
     save_as_docx(path = here(paste0("output/table_figure/table_lang_", dataset, ".docx")))
   
-  rm(final_sample_mslist_1a_2, lt)
+  rm(descriptive_unfiltered_1_3, lt)
   
-} else if (study == "1c" | study == "1d"){
+} else if (study == "2b" | study == "2c"){
   
   lt <-
     descriptive_dataset %>% 
@@ -714,7 +696,7 @@ if ((study == "1a" | study == "2") & filtered == FALSE){
 
 ```{r}
 ###----------------------------------------------------SET PARAMETERS
-if (study == "1a" | study == "2"){
+if (study == "1" | study == "3"){
  
   TIM_COL <- "trial_from_zero"
   WST <- 0
@@ -724,7 +706,7 @@ if (study == "1a" | study == "2"){
     
     PRED_COL <- c("language", "age_group", "trial_type", "trial_num", "group", "dominant_lang", "dom_lang_exposure", "nondom_langs_exposure", "years_education")
     
-  } else if (study == "2" & filtered == TRUE & vocabulary == TRUE){
+  } else if (study == "3" & filtered == TRUE & vocabulary == TRUE){
     
      PRED_COL <- c("language", "age_group", "cdi_tot_vocab_prod", "vocab_group", "vocab_centred", "vocab_scaled", "trial_type", "trial_num", "dominant_lang", "dom_lang_exposure", "nondom_langs_exposure", "years_education")
      
@@ -734,19 +716,19 @@ if (study == "1a" | study == "2"){
     
   }
   
-} else if (study == "1b"){
+} else if (study == "2a"){
   
   TIM_COL <- "time_align"
   WST <- 0
   WET <- 6600
   PRED_COL <- c("language", "trial_type", "trial_num", "ses_score", "exposure")
   
-} else if (study == "1c" | study == "1d"){
+} else if (study == "2b" | study == "2c"){
   
   TIM_COL <- "bin_start_time"
   PRED_COL <- c("language", "trial_type", "trial_num", "task_order")
   
-  if (study == "1c"){
+  if (study == "2b"){
     
     WST <- 0
     WET <- 6740
@@ -761,7 +743,7 @@ if (study == "1a" | study == "2"){
 
 ###----------------------------------------------------CREATE EYETRACKINGR DATA FOR FULL TRIAL PLOTS
 data_eyetracking_full_trials <- analysis_dataset %>%
-    left_join(edu_years, by = "mother_edu_raw") %>%
+    {if (study == "1" | study == "3") left_join(., edu_years, by = "mother_edu_raw") else . } %>%
   make_eyetrackingr_data(
                                 participant_column = "id",
                                 trial_column = "trial_name", 
@@ -776,7 +758,7 @@ full_trial_window <- subset_by_window(data_eyetracking_full_trials,
                                      rezero = TRUE, 
                                      remove = TRUE)
 
-if (study == "1c" | study == "1d"){
+if (study == "2b" | study == "2c"){
 
   data_time_series_full <- make_time_sequence_data(data_eyetracking_full_trials,
                                                    time_bin_size = 200,
@@ -824,17 +806,40 @@ image(1:length(cb_palette), 1, as.matrix(1:length(cb_palette)),
 
 ```{r time_series_plots, echo = FALSE}
 ###----------------------------------------------------SET PARAMETERS
-if (study == "1a"){data_time_series_full <- data_time_series_full %>%  filter(age_group == "7 months")}
-
-if (study == "2"){data_time_series_full <- data_time_series_full %>%  filter(age_group == "20 months")}
-
-if (study == "2" & vocabulary == TRUE){
+if (study == "1"){
+  data_time_series_full <- data_time_series_full %>%  filter(age_group == "7 months")
   
-  FIG_TITLE <- paste0("Time course of infant looking for Study ", study, " (", filtered_name, " - vocabulary )")
+  study_age <- "age 7 months"
+}
+
+if (study == "3"){
+  data_time_series_full <- data_time_series_full %>%  filter(age_group == "20 months")
+  
+  study_age <- "age 20 months"
+}
+
+if (study == "2a"){
+  
+  study_age <- "age 7–9 months"
+}
+
+if (study == "2b") {
+  
+  study_age <- "age 7 months; Visual Condition"
+}
+
+if (study == "2c") {
+  
+  study_age <- "age 7 months; Auditory Condition"
+}
+
+if (study == "3" & vocabulary == TRUE){
+  
+  FIG_TITLE <- paste0("Time course of infant looking for Study ", study, " (", study_age, " - vocabulary )")
   
 } else {
   
-  FIG_TITLE <- paste0("Time course of infant looking for Study ", study, " (", filtered_name, ")")
+  FIG_TITLE <- paste0("Time course of infant looking for Study ", study, " (", study_age, ")")
   
 }
 
@@ -845,7 +850,7 @@ X1 <- ANTICIP_START_OFF - 150
 X2 <- X1 + 1000
 X3 <- X2 + 1000
 
-if (study == "1c"){
+if (study == "2b"){
   
   FACET_PLACEMENT_TIMESTAMP <- X1 + 100
   
@@ -869,7 +874,7 @@ facet_text <- data.frame(trial_labels = c("Trial 1"),
 
 time_series_full_trial <-
   data_time_series_full %>%
-  filter(Time >= X_START & Time <= X_END) %>% # proportional to study 1a
+  filter(Time >= X_START & Time <= X_END) %>% # proportional to study 1
   mutate(trial_type_labs = case_when(trial_type == "pre-switch" ~ "Training",
                                      trial_type == "post-switch" ~ "Test")) %>%
   mutate(trial_type_labs = factor(trial_type_labs, levels = c("Training", "Test"))) %>%
@@ -915,10 +920,10 @@ time_series_full_trial <-
        fill = "Time period") +
   geom_text(data = facet_text, label = facet_text$label, show.legend = FALSE, color = "#666666",
             size = 3) +
-  facet_grid(trial_labels ~ trial_type_labs) +
+  facet_grid(trial_labels ~ factor(trial_type_labs, levels = c("Training", "Test"))) +
   ggtitle(FIG_TITLE) + 
   theme_minimal(base_size = 13.5) +
-  theme(plot.title = element_text(hjust = 0.5),
+  theme(#plot.title = element_text(hjust = 0.5),
         strip.background = element_rect(fill = "#D9D9D9", color = "#9b9b9b"),
         panel.background = element_rect(fill = "transparent", color = "transparent"),
         panel.grid = element_line(color = "#eaeaea"),
@@ -932,15 +937,21 @@ time_series_full_trial <-
 
 time_series_full_trial
 
-#2700 x 2700 pixels
-ggsave(paste0("plot_time_series_", dataset, ".png"),
+#2700 x 2700 pixels for studies 1, 2a and 3
+if (study == "1" | study == "2a" | study == "3") {
+  ggsave(paste0("plot_time_series_", dataset, ".png"),
        path = here("output/table_figure/"),
-       width = 9, height = 9, units = "in", dpi = 300)
+       width = 9, height = 9, units = "in", dpi = 300) 
+} else {
+   ggsave(paste0("plot_time_series_", dataset, ".png"),
+       path = here("output/table_figure/"),
+       width = 9, height = 11, units = "in", dpi = 300) 
+}
 
 ###------------------------------------------PLOT ANTICIPATION PERIOD------------------------------------------
 
 ### These plots show accuracy over the course of trials, not time bins
-if (study == "1c" | study == "1d"){
+if (study == "2b" | study == "2c"){
   
   BREAKS <- c(1,2,3,4,5,6,7,8,9,10,11,12)
   
@@ -984,7 +995,7 @@ model_data <-
   mutate(trial_num_scaled = trial_num - 2,
          time_bin_centred = TimeBin - 2)
 
-if (study == "1a"){
+if (study == "1"){
   
   model_data_pre <- 
     model_data %>%
@@ -996,7 +1007,7 @@ if (study == "1a"){
     filter(age_group == "7 months",
            trial_type == "post-switch")
   
-} else if (study == "2"){
+} else if (study == "3"){
   
   model_data_pre <- 
     model_data %>%  
@@ -1008,7 +1019,7 @@ if (study == "1a"){
     filter(age_group == "20 months",
            trial_type == "post-switch")
   
-} else if (study == "1b" | study == "1c" | study == "1d"){ 
+} else if (study == "2a" | study == "2b" | study == "2c"){ 
   
   model_data_pre <- 
     model_data %>%
@@ -1027,7 +1038,7 @@ if (study == "1a"){
 ```{r}
 ###------------------To compare visually with plotted model results later
 
-if (study == "2" & vocabulary == TRUE){
+if (study == "3" & vocabulary == TRUE){
 
   # Training
   print(
@@ -1107,7 +1118,7 @@ if (study == "2" & vocabulary == TRUE){
 
 ```{r}
 ###-------------------------------Plot kid by kid, to see missing data
-if (study == "2" & vocabulary == TRUE){
+if (study == "3" & vocabulary == TRUE){
   
   FIG_TITLE_MONO_PRE <- paste0("Training - Monolinguals ", study, " (",
                                filtered_name, " - vocabulary)")
@@ -1178,7 +1189,7 @@ model_data_post %>%
 
 ## Models
 
-For study 1c and 1d, the `gmler()` show a convergence warning. after further inspection/testing with transformed variables (trial number), the model converged and the estimates were proportional. Thus, it is a false negative. See code below for further checking.
+For study 2b and 2c, the `gmler()` show a convergence warning. after further inspection/testing with transformed variables (trial number), the model converged and the estimates were proportional. Thus, it is a false negative. See code below for further checking.
 ###Training phase
 ```{r}
 ###------------------------------------------------------------- TRAINING--------------
@@ -1194,7 +1205,7 @@ glmer_null_pre <-
         control=glmerControl(optimizer="bobyqa", 
                              optCtrl=list(maxfun = 100000)))
 
-if (study == "2" & vocabulary == TRUE){
+if (study == "3" & vocabulary == TRUE){
   
   glmermodel_pre <- 
      model_data_pre %>% 
@@ -1246,11 +1257,11 @@ tab_model(final_model_pre,
           show.re.var = FALSE, 
           show.icc = FALSE, 
           title = TAB_TITLE,
-          file = here(paste0("output/table_figure/glermodel_pre_", 
+          file = here(paste0("output/table_figure/glermodel_training_", 
                              dataset, ".doc"))) 
 
 
-###----------------------------------------------------CONVERGENCE TESTS FOR 1C AND 1D-----------------
+###----------------------------------------------------CONVERGENCE TESTS FOR 2b AND 2c-----------------
 #the tt and ll code below is nowhere close to 0. So I think the regular model should be fine to report.
 
 # allFit(show.meth.tab = TRUE)
@@ -1263,7 +1274,7 @@ tab_model(final_model_pre,
 ```{r}
 ###------------------------------------------------------------TEST--------------
 ###-------------------------------------------------------------GLMER ----------------
-if (study == "2" & vocabulary == TRUE){
+if (study == "3" & vocabulary == TRUE){
   
    glmermodel_post <- 
      model_data_post %>% 
@@ -1311,13 +1322,13 @@ tab_model(final_model_post,
           show.re.var = FALSE, 
           show.icc = FALSE, 
           title = TAB_TITLE, 
-          file = here(paste0("output/table_figure/glermodel_post_", dataset,
+          file = here(paste0("output/table_figure/glermodel_test_", dataset,
                              ".doc")))
             
-###----------------------------------------------------CONVERGENCE TESTS FOR 1C AND 1D-----------------
+###----------------------------------------------------CONVERGENCE TESTS FOR 2b AND 2c-----------------
 #the tt and ll code below is nowhere close to 0. So I think the regular model should be fine to report.
 
-# allFit(show.meth.tab = TRUE)
+# lme4::allFit(show.meth.tab = TRUE)
 # allFit(glmermodel_post)
 # tt <- getME(glmermodel_post,"theta")
 # ll <- getME(glmermodel_post,"lower")
@@ -1327,7 +1338,7 @@ tab_model(final_model_post,
 ##Model result plots
 ```{r}
 ###----------------------------------------------------PLOT OF MODEL RESULTS-----------------
-if (study == "2" & vocabulary == TRUE){
+if (study == "3" & vocabulary == TRUE){
   
   # training
   pre_vocab_predict <- 
@@ -1397,7 +1408,7 @@ if (study == "2" & vocabulary == TRUE){
          path = here("output/table_figure/"), 
          device = "png", width = 7, height = 4, units = "in", dpi = 300)
   
-} else if(study == "1a" | study == "1b" | (study == "2" & vocabulary == FALSE)) {
+} else if(study == "1" | study == "2a" | (study == "3" & vocabulary == FALSE)) {
   
   # training
   print(
@@ -1522,15 +1533,15 @@ if (vocabulary == FALSE){
 
 # ANOVAs
 
-Only for studies 1a and 2
+Only for studies 1 and 2
 
 ## Block data
 
 ```{r block_data, echo = FALSE}
 ###---------------------------------------------------BLOCK DATA----------------------------------
-if (study == "1a" | study == "2"){
+if (study == "1" | study == "3"){
   
-if ((study == "1a" | study == "2") & vocabulary == FALSE){
+if ((study == "1" | study == "3") & vocabulary == FALSE){
 
   block_data <- 
     data_eyetracking_clean %>%
@@ -1571,7 +1582,7 @@ if ((study == "1a" | study == "2") & vocabulary == FALSE){
               num_trials_contributed = mean(num_trials_contributed))
   
   
-} else if (study == "2" & vocabulary == TRUE){
+} else if (study == "3" & vocabulary == TRUE){
   
   block_data <- 
     data_eyetracking_clean %>%
@@ -1619,10 +1630,112 @@ block_data %>%
 }
 ```
 
+## Plot by trial
+
+```{r}
+
+if (study == "1" | study == "3"){
+  
+line_colors <- c("#D55E00", "#0072B2") # color-blind friendly
+
+trial_data <- data_eyetracking_clean %>%
+  make_time_window_data(aois = c("target", "distractor", "circle"),
+                        predictor_columns = c("age_group", "language", "trial_type", "trial_num")) %>%
+  select(-Elog, -Weights, -LogitAdjusted, -ArcSin) %>%
+  mutate(looking_ms = Prop * (SamplesTotal * (1000/60))) %>% #adds number of milliseconds spent looking at target for the trial
+  pivot_wider(names_from = AOI, values_from = c(SamplesInAOI, Prop, looking_ms)) %>%
+  mutate(total_looking_time = looking_ms_target + looking_ms_distractor + looking_ms_circle) %>%
+  filter(total_looking_time > 0) %>%
+  mutate(correct = case_when(looking_ms_target > looking_ms_distractor ~ 1, 
+                                   TRUE ~ 0),
+         incorrect = case_when(looking_ms_target < looking_ms_distractor ~ 1, 
+                                     TRUE ~ 0),
+         no_anticipation = case_when(looking_ms_target + looking_ms_distractor == 0 ~ 1, 
+                              TRUE ~ 0),
+         total_anticipation = 1 - no_anticipation)  
+}
+
+if (study == "1") {
+
+
+plot_by_trial <- trial_data %>%
+  filter(age_group == "7 months") %>%
+  mutate(trial_type = case_when(trial_type == "pre-switch" ~ "Training",
+                                TRUE ~ "Test"),
+         trial_type = factor(trial_type, levels = c("Training", "Test"))) %>%
+  group_by(trial_type, language, trial_num, age_group) %>%
+  summarize(correct = mean(correct)) %>%
+  ggplot(aes(x = trial_num, y = correct, color = language, shape = language, linetype = language)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap( ~ trial_type) +
+  scale_x_discrete(limits = c(1:9)) +
+  scale_y_continuous(limits = c(0:1)) +
+  scale_color_manual(values = line_colors) +
+  theme_minimal(base_size = 13.5) +
+  theme(#plot.title = element_text(hjust = 0.5),
+        strip.background = element_rect(fill = "#D9D9D9", color = "#9b9b9b"),
+        panel.background = element_rect(fill = "transparent", color = "transparent"),
+        panel.grid = element_line(color = "#eaeaea"),
+         panel.grid.major = element_line(size = .25),
+        # panel.grid.minor = element_blank(),
+        # panel.grid.major.x = element_blank(),
+        panel.spacing = unit(.5, "lines"),
+        axis.text = element_text(size = 10)) +
+  xlab("Trial number") +
+  ylab("Proportion of infants with \ncorrect anticipation") +
+  labs(color  = "Language group", linetype = "Language group", shape = "Language group") +
+  ggtitle("Correct anticipation by trial for Study 1 (age 7 months)")
+
+plot_by_trial
+
+ggsave(here(paste0("output/table_figure/plot_by_trial_", study, "_", filtered_name, ".png")), width = 9, height = 4)
+
+} else if (study == "3") {
+
+plot_by_trial <- trial_data %>%
+  filter(age_group == "20 months") %>%
+  mutate(trial_type = case_when(trial_type == "pre-switch" ~ "Training",
+                                TRUE ~ "Test"),
+         trial_type = factor(trial_type, levels = c("Training", "Test"))) %>%
+  group_by(trial_type, language, trial_num, age_group) %>%
+  summarize(correct = mean(correct)) %>%
+  ggplot(aes(x = trial_num, y = correct, color = language, shape = language, linetype = language)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap( ~ trial_type) +
+  scale_x_discrete(limits = c(1:9)) +
+  scale_y_continuous(limits = c(0:1)) +
+  scale_color_manual(values = line_colors) +
+  theme_minimal(base_size = 13.5) +
+  theme(#plot.title = element_text(hjust = 0.5),
+        strip.background = element_rect(fill = "#D9D9D9", color = "#9b9b9b"),
+        panel.background = element_rect(fill = "transparent", color = "transparent"),
+        panel.grid = element_line(color = "#eaeaea"),
+         panel.grid.major = element_line(size = .25),
+        # panel.grid.minor = element_blank(),
+        # panel.grid.major.x = element_blank(),
+        panel.spacing = unit(.5, "lines"),
+        axis.text = element_text(size = 10)) +
+  xlab("Trial number") +
+  ylab("Proportion of infants with \ncorrect anticipation") +
+  labs(color  = "Language group", linetype = "Language group", shape = "Language group") +
+  ggtitle("Correct anticipation by trial for Study 3 (age 20 months)")
+
+
+plot_by_trial
+
+ggsave(here(paste0("output/table_figure/plot_by_trial_", study, "_", filtered_name, ".png")), width = 9, height = 4)
+
+}
+
+```
+
+
 ## Anovas 7 m
 
 ```{r anovas}
-if (study == "1a" & filtered == TRUE){
+if (study == "1"){
 
 #--------------------------------------------------------------------ANOVA by block: 7m pre-switch
 
@@ -1645,8 +1758,8 @@ pre_7 <- block_data %>%
 apa.ezANOVA.table(pre_7,
                   table.number = 3,
                   correction = "none",
-                  table.title = "Mixed ANOVA results for the Training phase in Study 1a (7-month-olds)",
-                  filename = here(paste0("output/table_figure/anova_table_pre_", dataset, ".doc")))
+                  table.title = "Mixed ANOVA results for the Training phase in Study 1 (7-month-olds)",
+                  filename = here(paste0("output/table_figure/anova_table_training_", dataset, ".doc")))
 
 
 #--------------------------------------------------------------------Monolingual pre switch
@@ -1687,6 +1800,14 @@ pre_7_mono_t_2_3 <- block_data %>%
   filter(block_num == 2 | block_num == 3) %>%
   t.test(correct_anticipation ~ block_num, data = ., paired = TRUE)
 
+t_table_pre_7_mono_blocks <- broom::tidy(pre_7_mono_t_1_2) %>%
+  bind_rows(broom::tidy(pre_7_mono_t_1_3)) %>%
+  bind_rows(broom::tidy(pre_7_mono_t_2_3)) %>%
+  rename(mean_diff = estimate,
+         t = statistic,
+         df = parameter) %>%
+  mutate(cohen_d = t/sqrt(df +1))
+
 #--------------------------------------------------------------------Bilingual pre switch
 
 pre_7_bi <-  block_data %>%
@@ -1726,6 +1847,14 @@ pre_7_bi_t_2_3 <- block_data %>%
   filter(block_num == 2 | block_num == 3) %>%
   t.test(correct_anticipation ~ block_num, data = ., paired = TRUE)
 
+t_table_pre_7_bi_blocks <- broom::tidy(pre_7_bi_t_1_2) %>%
+  bind_rows(broom::tidy(pre_7_bi_t_1_3)) %>%
+  bind_rows(broom::tidy(pre_7_bi_t_2_3)) %>%
+  rename(mean_diff = estimate,
+         t = statistic,
+         df = parameter) %>%
+  mutate(cohen_d = t/sqrt(df +1))
+
 #-------------------------------------------------------------------- T tests comparing mono to bi for each block
 
 pre_7_t_1 <- block_data %>%
@@ -1746,6 +1875,15 @@ pre_7_t_3 <- block_data %>%
   filter(block_num == 3) %>%
   t.test(correct_anticipation ~ language, data = .)
 
+t_table_pre_7 <- broom::tidy(pre_7_t_1) %>%
+  bind_rows(broom::tidy(pre_7_t_2)) %>%
+  bind_rows(broom::tidy(pre_7_t_3)) %>%
+  rename(M_mono = estimate1,
+         M_bi = estimate2,
+         t = statistic,
+         df = parameter) %>%
+  select(-estimate, -method, -alternative)
+
 
 #--------------------------------------------------------------------ANOVA by block: 7m post-switch
 
@@ -1764,8 +1902,8 @@ post_7 <- block_data %>%
 apa.ezANOVA.table(post_7,
                   table.number = 3,
                   correction = "none",
-                  table.title = "Mixed ANOVA results for the Test phase in Study 1a (7-month-olds)",
-                  filename = here(paste0("output/table_figure/anova_table_post_", dataset, ".doc")))
+                  table.title = "Mixed ANOVA results for the Test phase in Study 1 (7-month-olds)",
+                  filename = here(paste0("output/table_figure/anova_table_test_", dataset, ".doc")))
 
 #-------------------------------------------------------------------- Monolinguals post switch
 
@@ -1781,6 +1919,18 @@ post_7_mono <-  block_data %>%
           detailed = TRUE,
           type = 3)
 
+
+#-------------------------------------------------------------------- MEANS
+block_data %>%
+  filter(age_group == "7 months" & trial_type == "pre-switch" & n_blocks == 3) %>%
+  apa.2way.table(iv1 = block_num, 
+               iv2 = language,
+               dv = correct_anticipation, 
+               data = ., 
+               show.marginal.means = FALSE,
+               filename = here(paste0("output/table_figure/means_table_training_", dataset, ".doc")),
+               table.number = 4)
+
 block_data %>%
   filter(age_group == "7 months" & trial_type == "post-switch" & n_blocks == 3) %>%
   apa.2way.table(iv1 = block_num, 
@@ -1788,7 +1938,7 @@ block_data %>%
                dv = correct_anticipation, 
                data = ., 
                show.marginal.means = FALSE,
-               filename = here(paste0("output/table_figure/means_table_post_", dataset, ".doc")),
+               filename = here(paste0("output/table_figure/means_table_test_", dataset, ".doc")),
                table.number = 4)
 
 
@@ -1817,6 +1967,14 @@ post_7_mono_t_2_3 <- block_data %>%
   filter(n_blocks == 3) %>%
   filter(block_num == 2 | block_num == 3) %>%
   t.test(correct_anticipation ~ block_num, data = ., paired = TRUE)
+
+t_table_post_7_mono_blocks <- broom::tidy(post_7_mono_t_1_2) %>%
+  bind_rows(broom::tidy(post_7_mono_t_1_3)) %>%
+  bind_rows(broom::tidy(post_7_mono_t_2_3)) %>%
+  rename(mean_diff = estimate,
+         t = statistic,
+         df = parameter) %>%
+  mutate(cohen_d = t/sqrt(df +1))
 
 #-------------------------------------------------------------------- Post switch bi
 
@@ -1858,6 +2016,14 @@ post_7_bi_t_2_3 <- block_data %>%
   filter(block_num == 2 | block_num == 3) %>%
   t.test(correct_anticipation ~ block_num, data = ., paired = TRUE)
 
+t_table_post_7_bi_blocks <- broom::tidy(post_7_bi_t_1_2) %>%
+  bind_rows(broom::tidy(post_7_bi_t_1_3)) %>%
+  bind_rows(broom::tidy(post_7_bi_t_2_3)) %>%
+  rename(mean_diff = estimate,
+         t = statistic,
+         df = parameter) %>%
+  mutate(cohen_d = t/sqrt(df +1))
+
 #-------------------------------------------------------------------- T tests comparing mono to bi for each block
 
 
@@ -1879,14 +2045,14 @@ post_7_t_3 <- block_data %>%
   filter(block_num == 3) %>%
   t.test(correct_anticipation ~ language, data = .)
 
-t_table_7 <- broom::tidy(post_7_t_1) %>%
+t_table_post_7 <- broom::tidy(post_7_t_1) %>%
   bind_rows(broom::tidy(post_7_t_2)) %>%
   bind_rows(broom::tidy(post_7_t_3)) %>%
   rename(M_mono = estimate1,
          M_bi = estimate2,
          t = statistic,
          df = parameter) %>%
-  select(-estimate, -method, -alternative)
+  select(-estimate, -method, -alternative) 
 
 #-------------------------------------------------------------------- Any difference in anticipations for 7 months?
 
@@ -1920,7 +2086,7 @@ post_7_anticipations <- block_data %>%
 ## ANOVAs - 20 m
 
 ```{r}
-if (study == "2" & filtered == TRUE & vocabulary == FALSE){
+if (study == "3" & vocabulary == FALSE){
 
 ##---------------------------------------------------------------20 month pre switch
 ## ANOVA by block: 20m pre-switch
@@ -1941,7 +2107,7 @@ apa.ezANOVA.table(pre_20,
                   table.number = 6,
                   correction = "none",
                   table.title = "Mixed ANOVA results for the Training phase in Study 2 (20-month-olds)",
-                  filename =  here(paste0("output/table_figure/anova_table_pre_", dataset, ".doc")))
+                  filename =  here(paste0("output/table_figure/anova_table_training_", dataset, ".doc")))
 
 pre_20_mono <-  block_data %>%
   filter(age_group == "20 months") %>%
@@ -1993,6 +2159,14 @@ pre_20_mono_t_2_3 <- block_data %>%
   filter(block_num == 2 | block_num == 3) %>%
   t.test(correct_anticipation ~ block_num, data = ., paired = TRUE)
 
+t_table_pre_mono_20_blocks <- broom::tidy(pre_20_mono_t_1_2) %>%
+  bind_rows(broom::tidy(pre_20_mono_t_1_3)) %>%
+  bind_rows(broom::tidy(pre_20_mono_t_2_3)) %>%
+  rename(mean_diff = estimate,
+         t = statistic,
+         df = parameter) %>%
+  mutate(cohen_d = t/sqrt(df +1))
+
 #bilingual:
 
 pre_20_bi_t_1_2 <- block_data %>%
@@ -2019,6 +2193,82 @@ pre_20_bi_t_2_3 <- block_data %>%
   filter(block_num == 2 | block_num == 3) %>%
   t.test(correct_anticipation ~ block_num, data = ., paired = TRUE)
 
+t_table_pre_20_bi_blocks <- broom::tidy(pre_20_bi_t_1_2) %>%
+  bind_rows(broom::tidy(pre_20_bi_t_1_3)) %>%
+  bind_rows(broom::tidy(pre_20_bi_t_2_3)) %>%
+  rename(mean_diff = estimate,
+         t = statistic,
+         df = parameter) %>%
+  mutate(cohen_d = t/sqrt(df +1))
+
+#--------------------------------------------------------------------T tests comparing improvement across blocks
+#monolingual:
+post_20_mono_t_1_2 <- block_data %>%
+  filter(age_group == "20 months") %>%
+  filter(language == "Monolinguals") %>%
+  filter(trial_type == "post-switch") %>%
+  filter(n_blocks == 3) %>%
+  filter(block_num == 1 | block_num == 2) %>%
+  t.test(correct_anticipation ~ block_num, data = ., paired = TRUE)
+
+post_20_mono_t_1_3 <- block_data %>%
+  filter(age_group == "20 months") %>%
+  filter(language == "Monolinguals") %>%
+  filter(trial_type == "post-switch") %>%
+  filter(n_blocks == 3) %>%
+  filter(block_num == 1 | block_num == 3) %>%
+  t.test(correct_anticipation ~ block_num, data = ., paired = TRUE)
+
+post_20_mono_t_2_3 <- block_data %>%
+  filter(age_group == "20 months") %>%
+  filter(language == "Monolinguals") %>%
+  filter(trial_type == "post-switch") %>%
+  filter(n_blocks == 3) %>%
+  filter(block_num == 2 | block_num == 3) %>%
+  t.test(correct_anticipation ~ block_num, data = ., paired = TRUE)
+
+t_table_post_mono_20_blocks <- broom::tidy(post_20_mono_t_1_2) %>%
+  bind_rows(broom::tidy(post_20_mono_t_1_3)) %>%
+  bind_rows(broom::tidy(post_20_mono_t_2_3)) %>%
+  rename(mean_diff = estimate,
+         t = statistic,
+         df = parameter) %>%
+  mutate(cohen_d = t/sqrt(df +1))
+
+#bilingual:
+
+post_20_bi_t_1_2 <- block_data %>%
+  filter(age_group == "20 months") %>%
+  filter(language == "Bilinguals") %>%
+  filter(trial_type == "post-switch") %>%
+  filter(n_blocks == 3) %>%
+  filter(block_num == 1 | block_num == 2) %>%
+  t.test(correct_anticipation ~ block_num, data = ., paired = TRUE)
+
+post_20_bi_t_1_3 <- block_data %>%
+  filter(age_group == "20 months") %>%
+  filter(language == "Bilinguals") %>%
+  filter(trial_type == "post-switch") %>%
+  filter(n_blocks == 3) %>%
+  filter(block_num == 1 | block_num == 3) %>%
+  t.test(correct_anticipation ~ block_num, data = ., paired = TRUE)
+
+post_20_bi_t_2_3 <- block_data %>%
+  filter(age_group == "20 months") %>%
+  filter(language == "Bilinguals") %>%
+  filter(trial_type == "post-switch") %>%
+  filter(n_blocks == 3) %>%
+  filter(block_num == 2 | block_num == 3) %>%
+  t.test(correct_anticipation ~ block_num, data = ., paired = TRUE)
+
+t_table_post_20_bi_blocks <- broom::tidy(post_20_bi_t_1_2) %>%
+  bind_rows(broom::tidy(post_20_bi_t_1_3)) %>%
+  bind_rows(broom::tidy(post_20_bi_t_2_3)) %>%
+  rename(mean_diff = estimate,
+         t = statistic,
+         df = parameter) %>%
+  mutate(cohen_d = t/sqrt(df +1))
+
 #-------------------------------------------------------------------- T tests comparing mono to bi for each block
 
 pre_20_t_1 <- block_data %>%
@@ -2038,6 +2288,11 @@ pre_20_t_3 <- block_data %>%
   filter(trial_type == "pre-switch") %>%
   filter(block_num == 3) %>%
   t.test(correct_anticipation ~ language, data = .)
+
+t_table_pre_20 <- broom::tidy(pre_20_t_1) %>%
+  bind_rows(broom::tidy(pre_20_t_2)) %>%
+  bind_rows(broom::tidy(pre_20_t_3)) 
+
 #-----------------------------------------------------------------POST SWITCH 20
 
 ## ANOVA by block: 20m post-switch
@@ -2054,12 +2309,41 @@ post_20 <- block_data %>%
           detailed = TRUE,
           type = 3)
 
+#-------------------------------------------------------------------- T tests comparing mono to bi for each block
+
+post_20_t_1 <- block_data %>%
+  filter(age_group == "20 months") %>%
+  filter(trial_type == "post-switch") %>%
+  filter(block_num == 1) %>%
+  t.test(correct_anticipation ~ language, data = .)
+
+post_20_t_2 <- block_data %>%
+  filter(age_group == "20 months") %>%
+  filter(trial_type == "post-switch") %>%
+  filter(block_num == 2) %>%
+  t.test(correct_anticipation ~ language, data = .)
+
+post_20_t_3 <- block_data %>%
+  filter(age_group == "20 months") %>%
+  filter(trial_type == "post-switch") %>%
+  filter(block_num == 3) %>%
+  t.test(correct_anticipation ~ language, data = .)
+
+t_table_post_20 <- broom::tidy(post_20_t_1) %>%
+  bind_rows(broom::tidy(post_20_t_2)) %>%
+  bind_rows(broom::tidy(post_20_t_3)) %>%
+  rename(M_mono = estimate1,
+         M_bi = estimate2,
+         t = statistic,
+         df = parameter) %>%
+  select(-estimate, -method, -alternative)
+
 #-----------------------------------------------------------------make table
 apa.ezANOVA.table(post_20,
                   table.number = 7,
                   correction = "none",
-                  table.title = "Mixed ANOVA results for the Test phase in Study 2 (20-month-olds)",
-                  filename =  here(paste0("output/table_figure/anova_table_post_", dataset, ".doc")))
+                  table.title = "Mixed ANOVA results for the Test phase in Study 3 (20-month-olds)",
+                  filename =  here(paste0("output/table_figure/anova_table_test_", dataset, ".doc")))
 
 post_20_mono <-  block_data %>%
   filter(age_group == "20 months") %>%
@@ -2085,6 +2369,27 @@ post_20_bi <-  block_data %>%
           detailed = TRUE,
           type = 3)
 
+#-------------------------------------------------------------------- MEANS
+block_data %>%
+  filter(age_group == "20 months" & trial_type == "pre-switch" & n_blocks == 3) %>%
+  apa.2way.table(iv1 = block_num, 
+               iv2 = language,
+               dv = correct_anticipation, 
+               data = ., 
+               show.marginal.means = FALSE,
+               filename = here(paste0("output/table_figure/means_table_training_", dataset, ".doc")),
+               table.number = 4)
+
+block_data %>%
+  filter(age_group == "20 months" & trial_type == "post-switch" & n_blocks == 3) %>%
+  apa.2way.table(iv1 = block_num, 
+               iv2 = language,
+               dv = correct_anticipation, 
+               data = ., 
+               show.marginal.means = FALSE,
+               filename = here(paste0("output/table_figure/means_table_test_", dataset, ".doc")),
+               table.number = 4)
+
 }
 ```
 
@@ -2095,7 +2400,7 @@ Check if overall performance correlates across conditions
 ## Data
 
 ```{r}
-if (study == "1a" | study == "2"){
+if (study == "1" | study == "3"){
   
   corr_data <- 
     model_data %>% 
@@ -2103,11 +2408,11 @@ if (study == "1a" | study == "2"){
     summarise(mean_prop = mean(Prop, na.rm = T)) %>% 
     ungroup()
   
-  if (study == "1a"){
+  if (study == "1"){
     
     CORR_AGE = "7 months"
     
-  } else if (study == "2"){
+  } else if (study == "3"){
     
     CORR_AGE = "20 months"
     
@@ -2130,7 +2435,7 @@ if (study == "1a" | study == "2"){
              pre_switch = `pre-switch`)
       
   
-} else if (study == "1b" | study == "1c"| study == "1d"){
+} else if (study == "2a" | study == "2b"| study == "2c"){
   
   corr_data <- 
     model_data %>% 
@@ -2198,197 +2503,6 @@ ggscatter(corr_mono, x = "post_switch", y = "pre_switch",
           xlab = "Test", ylab = "Training")
 ```
 
-# Learning
-
-Check learning across conditions. Differences between mean performance at the last trial of the Training phase vs. performance at the fist trial of Test phase.
-
-## Data
-
-```{r}
-# create dataset from raw data
-if (study == "1c" | study == "1d"){
-  
-  last_trial = 12
-  
-} else{
-  
-  last_trial = 9
-  
-  if (study == "1a"){
-    
-    data_eyetracking_clean <- 
-      data_eyetracking_clean %>% 
-      filter(age_group == "7 months")
-    
-  } else if (study == "2"){
-    
-    data_eyetracking_clean <- 
-      data_eyetracking_clean %>% 
-      filter(age_group == "20 months")
-    
-  }
-}
-
-learning_data <- 
-  make_time_window_data(data_eyetracking_clean,
-                        aois = "target",
-                        predictor_columns = c("language", "trial_type", "trial_num"),
-                        ) %>%
-  filter((trial_num == last_trial & trial_type == "pre-switch") |
-         (trial_num == 1 & trial_type == "post-switch"))
 
 
-if (study == "2") { # add 0.05 to avoid the all-zeros distribution on Test phase
-  
-    new_temp <- tibble(id = "fake_p", 
-                       trial_name = "post-switch_1", 
-                       trial_type = "post-switch", 
-                       language = "Monolinguals", 
-                       SamplesTotal = 60, 
-                       SamplesInAOI = 3)
-    
-    learning_data <- 
-      bind_rows(learning_data, new_temp) %>% 
-      mutate(trial_type = fct_rev(trial_type),
-             language = fct_rev(language))
-  
-}
-```
-
-## Model
-
-```{r}
-# visualizations
-learning_data %>% 
-  ggplot(., aes(x = trial_type, y = SamplesInAOI / SamplesTotal, color = language)) +
-  stat_summary()
-
-learning_data %>% 
-  ggplot(., aes(x = SamplesInAOI / SamplesTotal)) +
-  geom_histogram() +
-  facet_wrap(language ~ trial_type)
-
-# model
-# fixed effects only 
-learning_model <- glm(SamplesInAOI / SamplesTotal ~ language * trial_type,
-                      data = learning_data, 
-                      family = binomial, 
-                      weights = SamplesTotal)
-
-summary(learning_model) 
-tab_model(learning_model)
-
-# plot model fit
-ggpredict(learning_model, terms = c("trial_type", "language"), type = "fe", ci.lvl = FALSE) %>% 
-  plot(colors = cb_palette, line.size = 1, connect.lines = TRUE) +
-  labs(title = paste0("Predicted values of proportion looking to target in Study ", study, " (", filtered_name, ")"), 
-       x = "Trial type", 
-       y = "Predicted proportion looking to target", color = "Language \n group")
-
-#ggsave(paste0("plot_learning_model_", dataset, ".png"), 
-#       path = here("output/table_figure/"), 
-#       device = "png", width = 7, height = 4, units = "in", dpi = 300)
-```
-
-#Individual Differences analyses
-
-```{r}
-
-if (study == "1a" & filtered == TRUE) {
-  
-  
-  ###------------------------------------------MODEL WITH 3 LANG GROUPS -----------------
-  
- #-----------------------------------------Model - TRAINING
- glmermodel_3langs_pre <- 
-    model_data_pre %>% 
-    mutate(lang_group_type = paste0(language, "_", group),
-           lang_group_type = case_when(str_detect(lang_group_type, "Monolinguals") ~ "Monolinguals",
-                                    TRUE ~ lang_group_type),
-           lang_group_type = factor(lang_group_type, levels = fct_rev(unique(lang_group_type)))) %>%
-    glmer(SamplesInAOI / SamplesTotal ~ lang_group_type * time_bin_centred *
-            trial_num_scaled + (1 | id),
-          data = ., 
-          family = binomial, 
-          weights = SamplesTotal, 
-          control = glmerControl(optimizer="bobyqa", 
-                                 optCtrl = list(maxfun = 100000)))
-  tab_model(glmermodel_3langs_pre)
-  #-----------------------------------------Model - TEST
-    glmermodel_3langs_post <- 
-    model_data_post %>% 
-    mutate(lang_group_type = paste0(language, "_", group),
-           lang_group_type = case_when(str_detect(lang_group_type, "Monolinguals") ~ "Monolinguals",
-                                    TRUE ~ lang_group_type),
-           lang_group_type = factor(lang_group_type, levels = fct_rev(unique(lang_group_type)))) %>%
-    glmer(SamplesInAOI / SamplesTotal ~ lang_group_type * time_bin_centred *
-            trial_num_scaled + (1 | id),
-          data = ., 
-          family = binomial, 
-          weights = SamplesTotal, 
-          control = glmerControl(optimizer="bobyqa", 
-                                 optCtrl = list(maxfun = 100000)))
-  tab_model(glmermodel_3langs_post)
-
-  #-----------------------------------------Visualization - TRAINING  
-  print(ggpredict(glmermodel_3langs_pre, terms = c("time_bin_centred", "trial_num_scaled",
-                                       "lang_group_type"), type = "re", ci.lvl = FALSE) %>%
-      plot(colors = "trial_num_scaled", line.size = 1, connect.lines = TRUE) +
-    labs(title = paste0("Predicted values of proportion looking to target during the Training phase \n in Study ", study, " (", filtered_name, ")"), 
-         x = "Time in milliseconds during anticipation period", 
-         y = "Proportion looking to target", color = "Trial number") +
-    scale_color_manual(values = blues, labels = c(2, 3, 4, 5, 6, 7, 8, 9)) +
-    scale_x_continuous(breaks = c(0, 2, 4), labels = c("0", "500", "1000")) +
-    ylim(-0.1, 1) +
-    theme(axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)),
-          axis.title.x = element_text(margin = margin(t = 10, r = 0, b = 0, l = 0))))
-   
-  #-----------------------------------------Visualization - TEST  
-    print(ggpredict(glmermodel_3langs_post, terms = c("time_bin_centred", "trial_num_scaled",
-                                       "lang_group_type"), type = "re", ci.lvl = FALSE) %>%
-      plot(colors = "trial_num_scaled", line.size = 1, connect.lines = TRUE) +
-    labs(title = paste0("Predicted values of proportion looking to target during the Test phase \n in Study ", study, " (", filtered_name, ")"), 
-         x = "Time in milliseconds during anticipation period", 
-         y = "Proportion looking to target", color = "Trial number") +
-    scale_color_manual(values = blues, labels = c(2, 3, 4, 5, 6, 7, 8, 9)) +
-    scale_x_continuous(breaks = c(0, 2, 4), labels = c("0", "500", "1000")) +
-    ylim(-0.1, 1) +
-    theme(axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)),
-          axis.title.x = element_text(margin = margin(t = 10, r = 0, b = 0, l = 0))))
-}
-
-if (study == "2" & filtered == TRUE &  vocabulary == FALSE) {
- 
-  ###------------------------------------------MODEL WITH SES as predictor ----------------- 
-  
-  ##--------------------------------TRAINING
-    glmermodel_ses_pre <- 
-    model_data_pre %>% 
-    mutate(edu_rescaled = scales::rescale(years_education),
-           edu_centred = scale(years_education, center = TRUE, scale = TRUE)) %>%
-    glmer(SamplesInAOI / SamplesTotal ~ language * time_bin_centred *
-            trial_num_scaled + edu_centred + edu_centred:language + (1 | id),
-          data = ., 
-          family = binomial, 
-          weights = SamplesTotal, 
-          control = glmerControl(optimizer="bobyqa", 
-                                 optCtrl = list(maxfun = 100000)))
-  print(tab_model(glmermodel_ses_pre))
-  
-  ##--------------------------------TEST
-    glmermodel_ses_post <- 
-    model_data_post %>% 
-    mutate(edu_rescaled = scales::rescale(years_education),
-           edu_centred = scale(years_education, center = TRUE, scale = TRUE)) %>%
-    glmer(SamplesInAOI / SamplesTotal ~ language * time_bin_centred *
-            trial_num_scaled + edu_centred + edu_centred:language + (1 | id),
-          data = ., 
-          family = binomial, 
-          weights = SamplesTotal, 
-          control = glmerControl(optimizer="bobyqa", 
-                                 optCtrl = list(maxfun = 100000)))
-  print(tab_model(glmermodel_ses_post))
-}
-  
-```
 

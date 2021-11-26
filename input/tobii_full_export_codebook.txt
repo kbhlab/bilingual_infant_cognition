@@ -1,7 +1,9 @@
-Article: Iliaei, S. P., Killam, H., Dal Ben, R., & Byers-Heinlein, K. (under review). Bilingualism affects infant cognition: Evidence from new and reanalyzed data.
+Article: Dal Ben, R., Killam, H., Iliaei, S. P., & Byers-Heinlein, K. (under review). Bilingualism affects infant cognition: Evidence from new and reanalyzed data.
 OSF: https://osf.io/bz8jn/
 
 Code book for "tobii_full_export.rda"
+
+This is the raw eyetracking data for studies 1 and 3.
 
 Feedback and suggestions: 
 <kbh.coordinator@concordia.ca>, <dalbenwork@gmail.com>, <k.byers@concordia.ca>
