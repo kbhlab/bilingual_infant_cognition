@@ -21,7 +21,7 @@ library(janitor)
 
 # list all .csv from folder and merge them
 ## list all .csv files
-setwd(here("/02_input_csv")) 
+setwd(here("02_input_csv")) 
 
 list_events <- list.files(pattern = "*events.csv")
 list_samples <- list.files(pattern = "*data.csv")
@@ -66,7 +66,7 @@ events_clean <-
     reward_side = if_else(experiment == "Experiment1", as.character(NA), reward_side)
     )
 
-write_csv(events_clean, path = here("03_output/01_wrangling/events.csv"))
+write_csv(events_clean, path = here("03_output","01_wrangling","events.csv"))
 
 ## samples (parameters from matlab script)
 ## replace NaN with NA
@@ -93,7 +93,7 @@ samples_clean <-
         )
     )
       
-write_csv(samples_clean, path = here("03_output/01_wrangling/samples.csv"))
+write_csv(samples_clean, path = here("03_output","01_wrangling","samples.csv"))
 
 # merge datasets
 # join without exact match.
@@ -130,7 +130,7 @@ dataset <-
     event = as.factor(if_else(is.na(event), "fixation", as.character(event))) 
   )
 
-write_csv(dataset, path = here("03_output/01_wrangling/dataset.csv"))
+write_csv(dataset, path = here("03_output","01_wrangling","dataset.csv"))
 
 # define target/reward side
 ## from article:
@@ -161,10 +161,10 @@ data_exp1 <-
     )
   )
 
-write_csv(data_exp1, here("03_output/01_wrangling/dataset_exp1.csv"))
+write_csv(data_exp1, here("03_output","01_wrangling","dataset_exp1.csv"))
 
 # add participant information
-p_info <- read.csv(here("02_input_csv/p_info.csv"))
+p_info <- read.csv(here("02_input_csv","p_info.csv"))
 
 p_info_exp1 <- 
   p_info %>% 
@@ -196,7 +196,7 @@ upd_id %in% p_gender$id # True, except A02 and A08
 
 # merge data
 ## load & upd/clean gender 
-p_gender <- read.csv("02_input_csv/participants_gender_from_word.csv")
+p_gender <- read.csv(here("02_input_csv","participants_gender_from_word.csv"))
 
 p_gender_clean <- 
   p_gender %>% 
@@ -258,13 +258,13 @@ length(unique(data_exp1_clean2$id)) # experimental after exclusions = 102
 ## A90 was missing, but I found it (see old code section)
 
 ## backup data
-save(data_exp1_clean2, file = here("03_output/01_wrangling/data_exp1_clean.rda"))
-save(p_info_exp1_v3, file = here("03_output/01_wrangling/participant_info_exp1_v3.rda"))
-write_csv(data_exp1_clean2, here("03_output/01_wrangling/dataset_exp1_clean.csv"))
-write_csv(p_info_exp1_v3, here("03_output/01_wrangling/participant_info_exp1_v3.csv"))    
+save(data_exp1_clean2, file = here("03_output","01_wrangling","data_exp1_clean.rda"))
+save(p_info_exp1_v3, file = here("03_output","01_wrangling","participant_info_exp1_v3.rda"))
+write_csv(data_exp1_clean2, here("03_output","01_wrangling","dataset_exp1_clean.csv"))
+write_csv(p_info_exp1_v3, here("03_output","01_wrangling","participant_info_exp1_v3.csv"))    
 
-load("03_output/01_wrangling/data_exp1_clean.rda")
-load("03_output/01_wrangling/participant_info_exp1_v3.rda")
+load(here("03_output","01_wrangling","data_exp1_clean.rda"))
+load(here("03_output","01_wrangling","participant_info_exp1_v3.rda"))
 
 ## merge
 dataset_exp1 <- dplyr::left_join(data_exp1_clean2, p_info_exp1_v3, by = "id") 
@@ -288,7 +288,7 @@ dataset_exp1_v2 <-
 
 length(unique(dataset_exp1_v2$id)) # 102
 
-save(dataset_exp1_v2, file = here("/03_output/01_wrangling/dataset_exp1_v2.rda")) # backup
+save(dataset_exp1_v2, file = here("03_output","01_wrangling","dataset_exp1_v2.rda")) # backup
 
 ## additional variables from CogControl analysis script
 trial_name_levels <- c("pre-switch_1", "pre-switch_2", "pre-switch_3", 
@@ -377,7 +377,7 @@ length(unique(dataset_exp1_v3$id)) # 102
 
 data_full_trials_unfiltered_2a <- dataset_exp1_v3
 
-save(data_full_trials_unfiltered_2a, file = here("/output/data/data_full_trials_unfiltered_2a.rda")) 
+save(data_full_trials_unfiltered_2a, file = here("output","data","data_full_trials_unfiltered_2a.rda")) 
 
 ## Define minimum looking and minimum trial numbers for this study
 ## from "load_merge.R", added in 09/07/2020
@@ -407,7 +407,7 @@ data_anticipation <-
 
 data_anticipation_filtered_2a <- data_anticipation
 
-save(data_anticipation_filtered_2a, file = here("output/data/data_anticipation_filtered_2a.rda"))
+save(data_anticipation_filtered_2a, file = here("output","data","data_anticipation_filtered_2a.rda"))
 
 # used for creating data_full_trials object for plotting whole trial
 final_sample_ids <- 
@@ -422,6 +422,6 @@ data_full_trials <-
 
 data_full_trials_filtered_2a <- data_full_trials
 
-save(data_full_trials_filtered_2a, file = here("output/data/data_full_trials_filtered_2a.rda"))
+save(data_full_trials_filtered_2a, file = here("output","data","data_full_trials_filtered_2a.rda"))
 
 ###### THE END ######

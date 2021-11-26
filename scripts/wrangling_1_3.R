@@ -20,22 +20,22 @@ MIN_NUMBER_TRIALS <- 5
 
 ###-----------------------------------------------------------LOAD DATA--------------------------------------------------------
 
-load(here("input/tobii_full_export.Rda")) #full export data is saved as RDA file since the csv is too large for GitHub
+load(here("input","tobii_full_export.Rda")) #full export data is saved as RDA file since the csv is too large for GitHub
 
 ##parent education data is separate
-edu_7 <- read_csv(here("input/1_parent_ed_7m.csv")) %>%
+edu_7 <- read_csv(here("input", "1_parent_ed_7m.csv")) %>%
   mutate(recording_name = case_when(recording_name == "CogControl7_S16_45233" ~ "CogControl7_S16_45314",
                                     recording_name == "CogControl7_S28_45244" ~ "CogControl7_S28_45241",
                                     recording_name == "CogControl7_S108_48416" ~ "CogControl7_S108_49416",
                                     TRUE ~ recording_name))
-edu_20 <- read_csv(here("input/3_parent_ed_20m.csv")) %>%
+edu_20 <- read_csv(here("input", "3_parent_ed_20m.csv")) %>%
   mutate(recording_name = case_when(recording_name == "CogControl20_S116_48735" ~ "CogControl20_S116_48375",
                                     TRUE ~ recording_name))
 
 edu_all <- bind_rows(edu_7, edu_20)
 
 ## Read in MSL data
-ms_list_all <- read_csv(here("input/descriptive_dataset_1_3.csv"), na = "-") %>%
+ms_list_all <- read_csv(here("input", "descriptive_dataset_1_3.csv"), na = "-") %>%
   clean_names() %>%
   separate(lang_group,into = c("language", "group")) %>%
   left_join(edu_all, by = "recording_name") %>%
@@ -88,7 +88,7 @@ ms_list <- ms_list %>%
                                         language == "Bilinguals" & num_cdis == 2 ~ total_vocab_prod))
 
 descriptive_unfiltered_1_3 <- ms_list
-save(descriptive_unfiltered_1_3, file = here("output/data/descriptive_unfiltered_1_3.Rda"))
+save(descriptive_unfiltered_1_3, file = here("output","data","descriptive_unfiltered_1_3.Rda"))
 
 
 ###-----------------------------------------------------------------PREP TOBII DATA----------------------------------------------
@@ -179,7 +179,7 @@ data_tobii_cleaned <- tobii_full_export %>%
 
 data_tobii_cleaned_1_3 <- data_tobii_cleaned
 
-save(data_tobii_cleaned_1_3, file = here("output/data/data_tobii_cleaned_1_3.Rda"))
+save(data_tobii_cleaned_1_3, file = here("output","data","data_tobii_cleaned_1_3.Rda"))
 
 ###--------------------------------------------------------------------GET ANTICIPATION PERIOD KEEPERS---------------------------
 
@@ -214,7 +214,7 @@ final_sample_mslist <- ms_list %>%
 
 descriptive_filtered_1_3 <- final_sample_mslist
 
-save(descriptive_filtered_1_3, file = here("output/data/descriptive_filtered_1_3.Rda"))
+save(descriptive_filtered_1_3, file = here("output","data","descriptive_filtered_1_3.Rda"))
 
 ###----------------------------------------------------------------------CREATE MERGED FULL DATA----------------------------------
 
@@ -223,7 +223,7 @@ data_full_trials <- inner_join(data_tobii_cleaned, final_sample_mslist, by = "re
 
 data_full_trials_filtered_1_3 <- data_full_trials
 
-save(data_full_trials_filtered_1_3, file = here("output/data/data_full_trials_filtered_1_3.Rda"))
+save(data_full_trials_filtered_1_3, file = here("output","data","data_full_trials_filtered_1_3.Rda"))
 
 ###----------------------------------------------------------------------CREATE MERGED UNFILTERED FULL DATA----------------------------------
 
@@ -232,17 +232,17 @@ data_full_trials_unfiltered <- inner_join(data_tobii_cleaned, ms_list, by = "rec
 
 data_full_trials_unfiltered_1_3 <- data_full_trials_unfiltered
 
-save(data_full_trials_unfiltered_1_3, file = here("output/data/data_full_trials_unfiltered_1_3.Rda"))
+save(data_full_trials_unfiltered_1_3, file = here("output","data","data_full_trials_unfiltered_1_3.Rda"))
 
 ###----------------------------------------------------------------------CREATE MERGED ANTICIPATION DATA----------------------------------
 
 data_anticipation_filtered_1_3 <- data_anticipation
 
-save(data_anticipation_filtered_1_3, file = here("output/data/data_anticipation_filtered_1_3.Rda"))
+save(data_anticipation_filtered_1_3, file = here("output","data","data_anticipation_filtered_1_3.Rda"))
 
 ###----------------------------------------------------------------------CREATE EXCLUSION DATA----------------------------------
 
-exclusions <-read_csv(here("input/descriptive_dataset_1_3.csv"), na = "-") %>%
+exclusions <-read_csv(here("input","descriptive_dataset_1_3.csv"), na = "-") %>%
   separate(lang_group,into = c("language", "group")) %>%
   clean_names() %>%
   mutate(excl_reason = case_when(excl_reason == "incomplete_cdi" ~ "none", #no longer need missing cdi data to exclude
@@ -278,6 +278,6 @@ exclusions <-read_csv(here("input/descriptive_dataset_1_3.csv"), na = "-") %>%
 
 exclusions_1_3 <- exclusions
 
-save(exclusions_1_3, file = here("output/data/exclusions_1_3.Rda"))
+save(exclusions_1_3, file = here("output","data","exclusions_1_3.Rda"))
 
 ##### THE END #####

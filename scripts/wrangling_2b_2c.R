@@ -35,7 +35,7 @@ library(here)
 
 ##Load Data
 baby_info <- 
-  read_excel(here("input/Metadata.xlsx")) %>% 
+  read_excel(here("input","Metadata.xlsx")) %>% 
   clean_names() %>%
   mutate(group = case_when(group == "monolingual sp" ~ "monolingual",
                            group == "monoligual" ~ "monolingual",
@@ -202,10 +202,10 @@ select(id, group) %>%
 ###-----------------------------------------------------------SAVE VISUAL DATA
 
 data_full_trials_filtered_2b <- vis_all_filtered
-save(data_full_trials_filtered_2b, file = here("output/data/data_full_trials_filtered_2b.rda"))
+save(data_full_trials_filtered_2b, file = here("output","data","data_full_trials_filtered_2b.rda"))
 
 data_full_trials_unfiltered_2b <- vis_all
-save(data_full_trials_unfiltered_2b, file = here("output/data/data_full_trials_unfiltered_2b.rda"))
+save(data_full_trials_unfiltered_2b, file = here("output","data","data_full_trials_unfiltered_2b.rda"))
 
 ###-----------------------------------------------------------PREPARE UNFILTERED AUDITORY DATA
 aud_all <- 
@@ -287,9 +287,9 @@ aud_all_filtered %>%
 ###-----------------------------------------------------------SAVE AUDITORY DATA
 
 data_full_trials_filtered_2c <- aud_all_filtered
-save(data_full_trials_filtered_2c, file = here("output/data/data_full_trials_filtered_2c.rda"))
+save(data_full_trials_filtered_2c, file = here("output","data","data_full_trials_filtered_2c.rda"))
 
 data_full_trials_unfiltered_2c <- aud_all
-save(data_full_trials_unfiltered_2c, file = here("output/data/data_full_trials_unfiltered_2c.rda"))
+save(data_full_trials_unfiltered_2c, file = here("output","data","data_full_trials_unfiltered_2c.rda"))
 
 ##### THE END #####
