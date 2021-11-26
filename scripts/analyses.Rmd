@@ -150,19 +150,19 @@ if (study == "1" | study == "3"){
   ANTICIP_END_OFF <-  3000 + 150 # anticipation end + offset 
   
   #Exclusion data (includes everyone -- excluded and included)
-  load(here("output/data/exclusions_1_3.Rda"))
+  load(here("output","data","exclusions_1_3.Rda"))
   exclusions_dataset <- 
     exclusions_1_3 %>% 
     mutate(id = recording_name)
 
   if(filtered == TRUE){
     
-    load(here("output/data/data_full_trials_filtered_1_3.rda")) 
+    load(here("output","data","data_full_trials_filtered_1_3.rda")) 
     analysis_dataset = 
       data_full_trials_filtered_1_3 %>% 
       mutate(id = recording_name)
     
-    load(here("output/data/descriptive_filtered_1_3.Rda"))
+    load(here("output","data","descriptive_filtered_1_3.Rda"))
     
     
     descriptive_dataset <- descriptive_filtered_1_3 %>% 
@@ -190,12 +190,12 @@ if (study == "1" | study == "3"){
     
   } else if (filtered == FALSE){
     
-    load(here("output/data/data_full_trials_unfiltered_1_3.rda")) 
+    load(here("output","data","data_full_trials_unfiltered_1_3.rda")) 
     analysis_dataset = 
       data_full_trials_unfiltered_1_3 %>% 
       mutate(id = recording_name)
     
-    load(here("output/data/descriptive_unfiltered_1_3.Rda"))
+    load(here("output","data","descriptive_unfiltered_1_3.Rda"))
     #fix one date of birth that is wrong in MSL
     
     descriptive_dataset <- descriptive_unfiltered_1_3 %>%
@@ -234,7 +234,7 @@ if (study == "1" | study == "3"){
 
   if(filtered == TRUE){
     
-    load(here("output/data/data_full_trials_filtered_2a.rda")) 
+    load(here("output","data","data_full_trials_filtered_2a.rda")) 
     data_full_trials_filtered_2a <- data_full_trials_filtered_1b
     rm(data_full_trials_filtered_1b)
     analysis_dataset <- data_full_trials_filtered_2a
@@ -242,7 +242,7 @@ if (study == "1" | study == "3"){
     
   } else if (filtered == FALSE){
     
-    load(here("output/data/data_full_trials_unfiltered_2a.rda")) 
+    load(here("output","data","data_full_trials_unfiltered_2a.rda")) 
     data_full_trials_unfiltered_2a <- data_full_trials_unfiltered_1b
     rm(data_full_trials_unfiltered_1b)
     analysis_dataset <- data_full_trials_unfiltered_2a
@@ -262,13 +262,13 @@ if (study == "1" | study == "3"){
 
   if(filtered == TRUE){
     
-    load(here("output/data/data_full_trials_filtered_2b.rda")) 
+    load(here("output","data","data_full_trials_filtered_2b.rda")) 
     analysis_dataset <- data_full_trials_filtered_2b
     descriptive_dataset <- data_full_trials_filtered_2b
 
   } else if (filtered == FALSE){
     
-    load(here("output/data/data_full_trials_unfiltered_2b.rda")) 
+    load(here("output","data","data_full_trials_unfiltered_2b.rda")) 
     analysis_dataset <- data_full_trials_unfiltered_2b
     descriptive_dataset <- data_full_trials_unfiltered_2b
 
@@ -286,13 +286,13 @@ if (study == "1" | study == "3"){
 
   if(filtered == TRUE){
     
-    load(here("output/data/data_full_trials_filtered_2c.rda")) 
+    load(here("output","data","data_full_trials_filtered_2c.rda")) 
     analysis_dataset <- data_full_trials_filtered_2c
     descriptive_dataset <- data_full_trials_filtered_2c
     
   } else if (filtered == FALSE){
     
-    load(here("output/data/data_full_trials_unfiltered_2c.rda")) 
+    load(here("output","data","data_full_trials_unfiltered_2c.rda")) 
     analysis_dataset <- data_full_trials_unfiltered_2c 
     descriptive_dataset <- data_full_trials_unfiltered_2c 
     
@@ -572,7 +572,7 @@ For study 2a, D'Souza et al. (2020) article and supplementals do not provide inf
 ##---------------------------------------------------------------- LANGUAGE TABLES------------------------------ 
 if ((study == "1" | study == "3") & filtered == FALSE){
 
-  load(here("output/data/descriptive_filtered_1_3.Rda")) 
+  load(here("output","data","descriptive_filtered_1_3.Rda")) 
   descriptive_filtered_1_3 <- descriptive_filtered_1_3 %>%
     rename(id = recording_name)#load filtered descriptives for comparing
   
@@ -639,7 +639,7 @@ if ((study == "1" | study == "3") & filtered == FALSE){
   flextable::font(fontname = "Times", part = "all") %>%
   fontsize(size = 12, part = "all") %>%
   italic(i = 1, part = "header")  %>% 
-    save_as_docx(path = here(paste0("output/table_figure/table_lang_", dataset, ".docx")))
+    save_as_docx(path = here("output","table_figure","table_lang_", dataset, ".docx"))
   
   rm(descriptive_unfiltered_1_3, lt)
   
@@ -683,8 +683,8 @@ if ((study == "1" | study == "3") & filtered == FALSE){
   fontsize(size = 12, part = "all") %>%
   italic(i = 1, part = "header") %>% 
     save_as_docx(path =
-                   here(paste0("output/table_figure/table_lang_",
-                               dataset, ".docx")))
+                   here("output","table_figure","table_lang_",
+                               dataset, ".docx"))
   
   rm(lt)
   
@@ -940,11 +940,11 @@ time_series_full_trial
 #2700 x 2700 pixels for studies 1, 2a and 3
 if (study == "1" | study == "2a" | study == "3") {
   ggsave(paste0("plot_time_series_", dataset, ".png"),
-       path = here("output/table_figure/"),
+       path = here("output","table_figure",""),
        width = 9, height = 9, units = "in", dpi = 300) 
 } else {
    ggsave(paste0("plot_time_series_", dataset, ".png"),
-       path = here("output/table_figure/"),
+       path = here("output","table_figure",""),
        width = 9, height = 11, units = "in", dpi = 300) 
 }
 
@@ -1257,8 +1257,8 @@ tab_model(final_model_pre,
           show.re.var = FALSE, 
           show.icc = FALSE, 
           title = TAB_TITLE,
-          file = here(paste0("output/table_figure/glermodel_training_", 
-                             dataset, ".doc"))) 
+          file = here("output","table_figure", paste0("glermodel_training_", 
+                             dataset, ".doc")))
 
 
 ###----------------------------------------------------CONVERGENCE TESTS FOR 2b AND 2c-----------------
@@ -1322,7 +1322,7 @@ tab_model(final_model_post,
           show.re.var = FALSE, 
           show.icc = FALSE, 
           title = TAB_TITLE, 
-          file = here(paste0("output/table_figure/glermodel_test_", dataset,
+          file = here("output","table_figure", paste0("glermodel_test_", dataset,
                              ".doc")))
             
 ###----------------------------------------------------CONVERGENCE TESTS FOR 2b AND 2c-----------------
@@ -1371,7 +1371,7 @@ if (study == "3" & vocabulary == TRUE){
   )
 
   ggsave(paste0("plot_model_glmer_training_", dataset, ".png"), 
-         path = here("output/table_figure/"), 
+         path = here("output","table_figure",""), 
          device = "png", width = 7, height = 4, units = "in", dpi = 300)
 
   # test
@@ -1405,7 +1405,7 @@ if (study == "3" & vocabulary == TRUE){
   )
   
   ggsave(paste0("plot_model_glmer_test_", dataset, ".png"), 
-         path = here("output/table_figure/"), 
+         path = here("output","table_figure",""), 
          device = "png", width = 7, height = 4, units = "in", dpi = 300)
   
 } else if(study == "1" | study == "2a" | (study == "3" & vocabulary == FALSE)) {
@@ -1426,7 +1426,7 @@ if (study == "3" & vocabulary == TRUE){
   )
   
   ggsave(paste0("plot_model_glmer_training_", dataset, ".png"), 
-         path = here("output/table_figure/"), 
+         path = here("output","table_figure",""), 
          device = "png", width = 7, height = 4, units = "in", dpi = 300)
 
   # test
@@ -1445,7 +1445,7 @@ if (study == "3" & vocabulary == TRUE){
   )
   
   ggsave(paste0("plot_model_glmer_test_", dataset, ".png"), 
-         path = here("output/table_figure/"), 
+         path = here("output","table_figure",""), 
          device = "png", width = 7, height = 4, units = "in", dpi = 300)
 
 } else {
@@ -1465,7 +1465,7 @@ if (study == "3" & vocabulary == TRUE){
   )
   
   ggsave(paste0("plot_model_glmer_training_", dataset, ".png"), 
-         path = here("output/table_figure/"), 
+         path = here("output","table_figure",""), 
          device = "png", width = 7, height = 4, units = "in", dpi = 300)
 
   # test
@@ -1484,7 +1484,7 @@ if (study == "3" & vocabulary == TRUE){
   )
   
   ggsave(paste0("plot_model_glmer_test_", dataset, ".png"), 
-         path = here("output/table_figure/"), 
+         path = here("output","table_figure",""), 
          device = "png", width = 7, height = 4, units = "in", dpi = 300)
 }
 ```
@@ -1689,7 +1689,7 @@ plot_by_trial <- trial_data %>%
 
 plot_by_trial
 
-ggsave(here(paste0("output/table_figure/plot_by_trial_", study, "_", filtered_name, ".png")), width = 9, height = 4)
+ggsave(here("output","table_figure",paste0("plot_by_trial_", study, "_", filtered_name, ".png")), width = 9, height = 4)
 
 } else if (study == "3") {
 
@@ -1725,7 +1725,7 @@ plot_by_trial <- trial_data %>%
 
 plot_by_trial
 
-ggsave(here(paste0("output/table_figure/plot_by_trial_", study, "_", filtered_name, ".png")), width = 9, height = 4)
+ggsave(here("output","table_figure",paste0("plot_by_trial_", study, "_", filtered_name, ".png")), width = 9, height = 4)
 
 }
 
@@ -1759,7 +1759,7 @@ apa.ezANOVA.table(pre_7,
                   table.number = 3,
                   correction = "none",
                   table.title = "Mixed ANOVA results for the Training phase in Study 1 (7-month-olds)",
-                  filename = here(paste0("output/table_figure/anova_table_training_", dataset, ".doc")))
+                  filename = here("output","table_figure", paste0("anova_table_training_", dataset, ".doc")))
 
 
 #--------------------------------------------------------------------Monolingual pre switch
@@ -1903,7 +1903,7 @@ apa.ezANOVA.table(post_7,
                   table.number = 3,
                   correction = "none",
                   table.title = "Mixed ANOVA results for the Test phase in Study 1 (7-month-olds)",
-                  filename = here(paste0("output/table_figure/anova_table_test_", dataset, ".doc")))
+                  filename = here("output","table_figure", paste0("anova_table_test_", dataset, ".doc")))
 
 #-------------------------------------------------------------------- Monolinguals post switch
 
@@ -1928,7 +1928,7 @@ block_data %>%
                dv = correct_anticipation, 
                data = ., 
                show.marginal.means = FALSE,
-               filename = here(paste0("output/table_figure/means_table_training_", dataset, ".doc")),
+               filename = here("output","table_figure", paste0("means_table_training_", dataset, ".doc")),
                table.number = 4)
 
 block_data %>%
@@ -1938,7 +1938,7 @@ block_data %>%
                dv = correct_anticipation, 
                data = ., 
                show.marginal.means = FALSE,
-               filename = here(paste0("output/table_figure/means_table_test_", dataset, ".doc")),
+               filename = here("output","table_figure", paste0("means_table_test_", dataset, ".doc")),
                table.number = 4)
 
 
@@ -2107,7 +2107,7 @@ apa.ezANOVA.table(pre_20,
                   table.number = 6,
                   correction = "none",
                   table.title = "Mixed ANOVA results for the Training phase in Study 2 (20-month-olds)",
-                  filename =  here(paste0("output/table_figure/anova_table_training_", dataset, ".doc")))
+                  filename =  here("output","table_figure", paste0("anova_table_training_", dataset, ".doc")))
 
 pre_20_mono <-  block_data %>%
   filter(age_group == "20 months") %>%
@@ -2343,7 +2343,7 @@ apa.ezANOVA.table(post_20,
                   table.number = 7,
                   correction = "none",
                   table.title = "Mixed ANOVA results for the Test phase in Study 3 (20-month-olds)",
-                  filename =  here(paste0("output/table_figure/anova_table_test_", dataset, ".doc")))
+                  filename =  here("output","table_figure", paste0("anova_table_test_", dataset, ".doc")))
 
 post_20_mono <-  block_data %>%
   filter(age_group == "20 months") %>%
@@ -2377,7 +2377,7 @@ block_data %>%
                dv = correct_anticipation, 
                data = ., 
                show.marginal.means = FALSE,
-               filename = here(paste0("output/table_figure/means_table_training_", dataset, ".doc")),
+               filename = here("output","table_figure", paste0("means_table_training_", dataset, ".doc")),
                table.number = 4)
 
 block_data %>%
@@ -2387,7 +2387,7 @@ block_data %>%
                dv = correct_anticipation, 
                data = ., 
                show.marginal.means = FALSE,
-               filename = here(paste0("output/table_figure/means_table_test_", dataset, ".doc")),
+               filename = here("output","table_figure", paste0("means_table_test_", dataset, ".doc")),
                table.number = 4)
 
 }
