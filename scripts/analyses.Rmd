@@ -39,7 +39,7 @@ renv::restore() #restore from renv snapshot to make sure project uses correct ve
 
 
 ```{r}
-study <- "1" # options: "1", "2a", "2b", "2c", "3"
+study <- "2c" # options: "1", "2a", "2b", "2c", "3"
 filtered <- TRUE # options: TRUE = "filtered" OR FALSE = "unfiltered"
 
 # TRUE can only be selected for vocabulary if 
@@ -1213,6 +1213,40 @@ if (study == "3" & vocabulary == TRUE){
             language * time_bin_centred * trial_num_scaled + 
             vocab_scaled * trial_num_scaled + 
             vocab_scaled * language + 
+            (1 | id), 
+          data = ., 
+          family = binomial, 
+          weights = SamplesTotal, 
+          control = glmerControl(optimizer="bobyqa", 
+                                 optCtrl = list(maxfun = 100000)))
+
+  final_model_pre <-  glmermodel_pre
+  
+  print(summary(final_model_pre))
+  
+  TAB_TITLE <- paste0("Logistic mixed-effects model for Training phase - Study ",
+                      study, " (", filtered_name, " - vocabulary)")
+} else if (study == "2c") {
+  
+  #This model doesn't converge, but it's likely due to more trial numbers since it does converge, with similar estimates, when trial number is rescaled (see second model below)
+    glmermodel_pre <- 
+    model_data_pre %>% 
+    mutate(trial_num_scaled = trial_num_scaled) %>%
+    glmer(SamplesInAOI / SamplesTotal ~ 
+            language * time_bin_centred * trial_num_scaled * language + 
+            (1 | id), 
+          data = ., 
+          family = binomial, 
+          weights = SamplesTotal, 
+          control = glmerControl(optimizer="bobyqa", 
+                                 optCtrl = list(maxfun = 100000)))
+
+  
+  glmermodel_pre_rescaled <- 
+    model_data_pre %>% 
+    mutate(trial_num_scaled = trial_num_scaled/2) %>%
+    glmer(SamplesInAOI / SamplesTotal ~ 
+            language * time_bin_centred * trial_num_scaled * language + 
             (1 | id), 
           data = ., 
           family = binomial, 
