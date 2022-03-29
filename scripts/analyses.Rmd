@@ -39,7 +39,7 @@ renv::restore() #restore from renv snapshot to make sure project uses correct ve
 
 
 ```{r}
-study <- "2c" # options: "1", "2a", "2b", "2c", "3"
+study <- "1" # options: "1", "2a", "2b", "2c", "3"
 filtered <- TRUE # options: TRUE = "filtered" OR FALSE = "unfiltered"
 
 # TRUE can only be selected for vocabulary if 
@@ -920,7 +920,7 @@ time_series_full_trial <-
        fill = "Time period") +
   geom_text(data = facet_text, label = facet_text$label, show.legend = FALSE, color = "#666666",
             size = 3) +
-  facet_grid(trial_labels ~ factor(trial_type_labs, levels = c("Training", "Test"))) +
+  facet_grid(fct_reorder(trial_labels, parse_number(as.character(trial_labels))) ~ factor(trial_type_labs, levels = c("Training", "Test"))) +
   ggtitle(FIG_TITLE) + 
   theme_minimal(base_size = 13.5) +
   theme(#plot.title = element_text(hjust = 0.5),
