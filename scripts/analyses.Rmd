@@ -639,7 +639,7 @@ if ((study == "1" | study == "3") & filtered == FALSE){
   flextable::font(fontname = "Times", part = "all") %>%
   fontsize(size = 12, part = "all") %>%
   italic(i = 1, part = "header")  %>% 
-    save_as_docx(path = here("output","table_figure","table_lang_", dataset, ".docx"))
+    save_as_docx(path = here("output","table_figure",paste0("table_lang_", dataset, ".docx")))
   
   rm(descriptive_unfiltered_1_3, lt)
   
@@ -682,9 +682,7 @@ if ((study == "1" | study == "3") & filtered == FALSE){
   flextable::font(fontname = "Times", part = "all") %>%
   fontsize(size = 12, part = "all") %>%
   italic(i = 1, part = "header") %>% 
-    save_as_docx(path =
-                   here("output","table_figure","table_lang_",
-                               dataset, ".docx"))
+    save_as_docx(path = here("output","table_figure",paste0("table_lang_", dataset, ".docx")))
   
   rm(lt)
   

@@ -14,49 +14,49 @@
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">(Intercept)</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.06</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.03&nbsp;&ndash;&nbsp;0.13</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">language [Bilinguals]</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.61</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.19&nbsp;&ndash;&nbsp;2.01</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.416</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.18&nbsp;&ndash;&nbsp;2.01</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.417</td>
 </tr>
 <tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">time_bin_centred</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">time bin centred</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.67</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.52&nbsp;&ndash;&nbsp;2.83</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
 <tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">trial_num_scaled</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">trial num scaled</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.16</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.15&nbsp;&ndash;&nbsp;1.18</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
 <tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">language [Bilinguals] *<br>time_bin_centred</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">language [Bilinguals] *<br>time bin centred</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.83</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.75&nbsp;&ndash;&nbsp;0.92</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
 <tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">language [Bilinguals] *<br>trial_num_scaled</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">language [Bilinguals] *<br>trial num scaled</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.96</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.94&nbsp;&ndash;&nbsp;0.98</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
 <tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">time_bin_centred *<br>trial_num_scaled</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">time bin centred * trial<br>num scaled</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.94</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.93&nbsp;&ndash;&nbsp;0.95</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
 <tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">(language [Bilinguals] *<br>time_bin_centred) *<br>trial_num_scaled</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">(language [Bilinguals] *<br>time bin centred) * trial<br>num scaled</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.04</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.02&nbsp;&ndash;&nbsp;1.05</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
 
 <tr>
