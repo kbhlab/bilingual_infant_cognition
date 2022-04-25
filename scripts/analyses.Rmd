@@ -39,7 +39,7 @@ renv::restore() #restore from renv snapshot to make sure project uses correct ve
 
 
 ```{r}
-study <- "1" # options: "1", "2a", "2b", "2c", "3"
+study <- "3" # options: "1", "2a", "2b", "2c", "3"
 filtered <- TRUE # options: TRUE = "filtered" OR FALSE = "unfiltered"
 
 # TRUE can only be selected for vocabulary if 
@@ -924,6 +924,7 @@ time_series_full_trial <-
   theme(#plot.title = element_text(hjust = 0.5),
         strip.background = element_rect(fill = "#D9D9D9", color = "#9b9b9b"),
         panel.background = element_rect(fill = "transparent", color = "transparent"),
+        plot.background = element_rect(fill = "white"),
         panel.grid = element_line(color = "#eaeaea"),
         panel.grid.major = element_line(size = .25),
         panel.grid.minor = element_blank(),
@@ -1708,6 +1709,7 @@ plot_by_trial <- trial_data %>%
   theme(#plot.title = element_text(hjust = 0.5),
         strip.background = element_rect(fill = "#D9D9D9", color = "#9b9b9b"),
         panel.background = element_rect(fill = "transparent", color = "transparent"),
+        plot.background = element_rect(fill = "white"),
         panel.grid = element_line(color = "#eaeaea"),
          panel.grid.major = element_line(size = .25),
         # panel.grid.minor = element_blank(),
@@ -1743,6 +1745,7 @@ plot_by_trial <- trial_data %>%
   theme(#plot.title = element_text(hjust = 0.5),
         strip.background = element_rect(fill = "#D9D9D9", color = "#9b9b9b"),
         panel.background = element_rect(fill = "transparent", color = "transparent"),
+        plot.background = element_rect(fill = "white"),
         panel.grid = element_line(color = "#eaeaea"),
          panel.grid.major = element_line(size = .25),
         # panel.grid.minor = element_blank(),
